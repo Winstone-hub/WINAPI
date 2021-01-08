@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "InputManager.h"
 
 
 Player::Player()
@@ -22,6 +23,7 @@ void Player::Initialize(void)
 
 void Player::Progress(void)
 {
+	/*
 	POINT ptMouse;
 
 	GetCursorPos(&ptMouse);
@@ -29,26 +31,31 @@ void Player::Progress(void)
 	ScreenToClient(g_hWnd, &ptMouse);
 	
 	m_tTransPos.Position = Vector3(ptMouse.x, ptMouse.y);
+	*/
 	 
+	
+	DWORD dwKey = InputManager::GetInstance()->GetKey();
 
-	/*
-	if (GetAsyncKeyState(VK_UP))
+	if (KEY_UP & dwKey)
 	{
 		m_tTransPos.Position.fY -= 5;
 	}
-	if (GetAsyncKeyState(VK_DOWN))
+	if (KEY_DOWN & dwKey)
 	{
 		m_tTransPos.Position.fY += 5;
 	}
-	if (GetAsyncKeyState(VK_LEFT))
+	if (KEY_LEFT & dwKey)
 	{
 		m_tTransPos.Position.fX -= 5;
 	}
-	if (GetAsyncKeyState(VK_RIGHT))
+	if (KEY_RIGHT & dwKey)
 	{
 		m_tTransPos.Position.fX += 5;
 	}
-	*/
+	if (KEY_SPACE & dwKey)
+	{
+
+	}
 }
 
 void Player::Render(HDC _hdc)

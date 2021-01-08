@@ -151,10 +151,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Define.h" />
     <ClInclude Include="Enum.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Include.h" />
+    <ClInclude Include="InputManager.h" />
     <ClInclude Include="Logo.h" />
     <ClInclude Include="MainUpdate.h" />
     <ClInclude Include="Menu.h" />
@@ -172,6 +174,8 @@
     <ClInclude Include="WINAPI_FrameWork.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CollisionManager.cpp" />
+    <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Logo.cpp" />
     <ClCompile Include="MainUpdate.cpp" />
     <ClCompile Include="Menu.cpp" />

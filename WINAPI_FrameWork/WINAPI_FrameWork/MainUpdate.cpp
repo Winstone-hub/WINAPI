@@ -1,5 +1,6 @@
 #include "MainUpdate.h"
 #include "SceneManager.h"
+#include "InputManager.h"
 
 MainUpdate::MainUpdate()
 {
@@ -16,12 +17,15 @@ void MainUpdate::Initialize(void)
 {
 	m_hdc = GetDC(g_hWnd);
 
+	//ShowCursor(false);
+
 	SceneManager::GetInstance()->SetScene(SCENEID_STAGE);
 }
 
 void MainUpdate::Progress(void)
 {
 	SceneManager::GetInstance()->Progress();
+	InputManager::GetInstance()->UpdateKey();
 }
 
 void MainUpdate::Render(void)

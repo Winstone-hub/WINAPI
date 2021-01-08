@@ -55,6 +55,12 @@
     <Filter Include="소스 파일\99. Manager\ObjectManager\ObjectFactroy">
       <UniqueIdentifier>{b17b8908-e3e7-4c0d-bba6-d1d2606a43b0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\99. Manager\CollisionManager">
+      <UniqueIdentifier>{0357ab2a-818c-4c60-a1f8-80a406af55f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\99. Manager\InputManager">
+      <UniqueIdentifier>{c72c19ec-e892-42e5-84e2-0a093139920b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainUpdate.h">
@@ -114,6 +120,12 @@
     <ClInclude Include="ObjectManager.h">
       <Filter>소스 파일\99. Manager\ObjectManager</Filter>
     </ClInclude>
+    <ClInclude Include="CollisionManager.h">
+      <Filter>소스 파일\99. Manager\CollisionManager</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>소스 파일\99. Manager\InputManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WINAPI_FrameWork.cpp">
@@ -148,6 +160,12 @@
     </ClCompile>
     <ClCompile Include="ObjectManager.cpp">
       <Filter>소스 파일\99. Manager\ObjectManager</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionManager.cpp">
+      <Filter>소스 파일\99. Manager\CollisionManager</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>소스 파일\99. Manager\InputManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

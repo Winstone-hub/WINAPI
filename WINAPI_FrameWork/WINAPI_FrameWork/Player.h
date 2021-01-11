@@ -6,6 +6,8 @@ class Player : public Object
 private:
 	POINT m_ptMouse;
 	bool m_bMove;
+
+	Vector3 m_TargetPoint;
 public:
 	virtual void Initialize(void)override;
 	virtual void Progress(void)override;

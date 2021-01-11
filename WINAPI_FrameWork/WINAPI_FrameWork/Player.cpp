@@ -14,39 +14,46 @@ Player::~Player()
 
 void Player::Initialize(void)
 {
+	m_ptMouse = { 0, 0 };
 	m_tTransPos.Position = Vector3(WINSIZEX / 2.f, WINSIZEY / 2.f);
 	m_tTransPos.Rotation = Vector3(0.f, 0.f, 0.f);
 	m_tTransPos.Scale = Vector3(100.f, 100.f);
 
+	m_TargetPoint = Vector3(0.f, 0.f, 0.f);
+
 	m_strKey = "Player";
 	m_bMove = false;
-
-	GetCursorPos(&m_ptMouse);
-	ScreenToClient(g_hWnd, &m_ptMouse);
 }
 
 void Player::Progress(void)
 {
 	//CheckKey();
 
-	if (GetAsyncKeyState(VK_RBUTTON))
-		if(!m_bMove)
-			m_bMove = true;
-
-
-	if (m_bMove)
+	if (GetAsyncKeyState(VK_RBUTTON) && !m_bMove)
 	{
-		Vector3 TempPos;
-		TempPos.fX = m_ptMouse.x - m_tTransPos.Position.fX;
-		TempPos.fY = m_ptMouse.y - m_tTransPos.Position.fY;
-		
-		float fLen = sqrt((TempPos.fX * TempPos.fX) + (TempPos.fY * TempPos.fY));
+		m_bMove = true;
 
-		TempPos.fX /= fLen;
-		TempPos.fY /= fLen;
-		
-		m_tTransPos.Position.fX += TempPos.fX * 3;
-		m_tTransPos.Position.fY += TempPos.fY * 3;
+		GetCursorPos(&m_ptMouse);
+		ScreenToClient(g_hWnd, &m_ptMouse);
+
+		m_TargetPoint.fX = m_ptMouse.x - m_tTransPos.Position.fX;
+		m_TargetPoint.fY = m_ptMouse.y - m_tTransPos.Position.fY;
+	}
+
+	if (m_bMove) 
+	{
+		float fLength = sqrt((m_TargetPoint.fX * m_TargetPoint.fX) + (m_TargetPoint.fY * m_TargetPoint.fY));
+
+		m_TargetPoint.fX /= fLength;
+		m_TargetPoint.fY /= fLength;
+
+		m_tTransPos.Position.fX += m_TargetPoint.fX * 3;
+		m_tTransPos.Position.fY += m_TargetPoint.fY * 3;
+
+
+		//** 움직이고있는 플레이어 멈추기.
+
+
 	}
 }
 

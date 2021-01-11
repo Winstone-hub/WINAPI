@@ -8,6 +8,7 @@ InputManager::InputManager()
 
 InputManager::~InputManager()
 {
+
 }
 
 void InputManager::UpdateKey()
@@ -34,6 +35,13 @@ void InputManager::UpdateKey()
 	{
 		m_dwKey |= KEY_SPACE;
 	}
+	if (GetAsyncKeyState(VK_RETURN))
+	{
+		m_dwKey |= KEY_RETURN;
+	}
+
+
+	
 }
 
 

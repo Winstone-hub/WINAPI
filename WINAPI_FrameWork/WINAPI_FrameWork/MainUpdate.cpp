@@ -19,13 +19,15 @@ void MainUpdate::Initialize(void)
 
 	//ShowCursor(false);
 
-	SceneManager::GetInstance()->SetScene(SCENEID_STAGE);
+	SceneManager::GetInstance()->SetScene(SCENEID_LOGO);
 }
 
 void MainUpdate::Progress(void)
 {
-	SceneManager::GetInstance()->Progress();
 	InputManager::GetInstance()->UpdateKey();
+
+
+	SceneManager::GetInstance()->Progress();
 }
 
 void MainUpdate::Render(void)

@@ -1,5 +1,5 @@
 #include "ObjectManager.h"
-#include "Object.h"
+#include "Player.h"
 #include "CollisionManager.h"
 
 ObjectManager* ObjectManager::m_pInstance = NULL;
@@ -42,15 +42,20 @@ void ObjectManager::Progress(void)
 		}
 	}
 
-	map<string, list<Object*>>::iterator Player = m_mapObjectList.find("Player");
-	map<string, list<Object*>>::iterator Monster = m_mapObjectList.find("Monster");
+	map<string, list<Object*>>::iterator iterPlayer = m_mapObjectList.find("Player");
+	map<string, list<Object*>>::iterator iterMonster = m_mapObjectList.find("Monster");
 
-	for (list<Object*>::iterator iter = Monster->second.begin();
-		iter != Monster->second.end(); )
+	for (list<Object*>::iterator iter = iterMonster->second.begin();
+		iter != iterMonster->second.end(); )
 	{
-		if (CollisionManager::Collision(Player->second.front(), (*iter)))
+		if (CollisionManager::CollRect(iterPlayer->second.front(), (*iter)))
 		{
-			iter = Monster->second.erase(iter);
+			iter = iterMonster->second.erase(iter);
+			
+			Object* pObj = iterPlayer->second.front();
+
+			//((Player*)pObj)->SetMoveFalse();
+
 		}
 		else
 			++iter;

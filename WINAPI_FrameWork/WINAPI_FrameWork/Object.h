@@ -6,6 +6,7 @@ class Object
 protected:
 	Transform m_tTransPos;
 	string m_strKey;
+	float m_fSpeed;
 public:
 	virtual void Initialize()PURE;
 	virtual void Progress()PURE;

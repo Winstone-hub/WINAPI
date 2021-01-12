@@ -7,6 +7,7 @@ private:
 	POINT m_ptMouse;
 	bool m_bMove;
 
+	Vector3 m_Direction;
 	Vector3 m_TargetPoint;
 public:
 	virtual void Initialize(void)override;
@@ -15,6 +16,10 @@ public:
 	virtual void Release(void)override;
 public:
 	void CheckKey();
+	void SetMoveFalse()
+	{
+		m_bMove = false;
+	}
 public:
 	Player();
 	virtual ~Player();

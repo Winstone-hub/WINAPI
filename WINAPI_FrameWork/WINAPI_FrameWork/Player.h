@@ -9,6 +9,9 @@ private:
 
 	Vector3 m_Direction;
 	Vector3 m_TargetPoint;
+
+	Vector3 m_LinePoint;
+
 public:
 	virtual void Initialize(void)override;
 	virtual void Progress(void)override;

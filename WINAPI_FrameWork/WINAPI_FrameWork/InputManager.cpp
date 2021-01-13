@@ -39,9 +39,14 @@ void InputManager::UpdateKey()
 	{
 		m_dwKey |= KEY_RETURN;
 	}
-
-
-	
+	if (GetAsyncKeyState(VK_RBUTTON))
+	{
+		m_dwKey |= KEY_RBUTTON;
+	}
+	if (GetAsyncKeyState(VK_LBUTTON))
+	{
+		m_dwKey |= KEY_LBUTTON;
+	}
 }
 
 

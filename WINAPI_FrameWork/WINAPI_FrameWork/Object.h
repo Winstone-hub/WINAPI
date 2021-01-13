@@ -7,6 +7,7 @@ protected:
 	Transform m_tTransPos;
 	string m_strKey;
 	float m_fSpeed;
+	float m_fAngle;
 public:
 	virtual void Initialize()PURE;
 	virtual void Progress()PURE;

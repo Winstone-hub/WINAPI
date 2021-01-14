@@ -11,7 +11,10 @@ private:
 	Vector3 m_TargetPoint;
 
 	Vector3 m_LinePoint;
+	bool m_bJump;
 
+	float m_fOldY;
+	float m_fTime;
 public:
 	virtual void Initialize(void)override;
 	virtual void Progress(void)override;

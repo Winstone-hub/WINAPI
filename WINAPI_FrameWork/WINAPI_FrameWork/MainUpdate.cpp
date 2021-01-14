@@ -26,7 +26,6 @@ void MainUpdate::Progress(void)
 {
 	InputManager::GetInstance()->UpdateKey();
 
-
 	SceneManager::GetInstance()->Progress();
 }
 

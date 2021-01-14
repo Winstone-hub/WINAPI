@@ -19,12 +19,15 @@ void Bullet::Initialize(void)
 
 	m_fAngle = 0.f;
 	m_strKey = "Bullet";
-	m_fSpeed = 5.f;
+	m_fSpeed = 15.f;
 }
 
 void Bullet::Progress(void)
 {
-	m_tTransPos.Position.fY -= m_fSpeed;
+	//m_tTransPos.Position.fY -= m_fSpeed;
+
+	m_tTransPos.Position.fX += cosf(m_fX *  PI / 180) * m_fSpeed;
+	m_tTransPos.Position.fY += -sinf(m_fY *  PI / 180) * m_fSpeed;
 }
 
 void Bullet::Render(HDC _hdc)

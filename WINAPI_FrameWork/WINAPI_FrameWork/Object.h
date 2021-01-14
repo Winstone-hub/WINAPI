@@ -19,6 +19,11 @@ public:
 	Vector3 GetPosition() { return m_tTransPos.Position; }
 	Vector3 GetScale() { return m_tTransPos.Scale; }
 	
+	void SetAngle(float _Angle)
+	{
+		m_fAngle = _Angle;
+	}
+
 	void SetPosition(float _fx, float _fy)
 	{
 		m_tTransPos.Position.fX = _fx;

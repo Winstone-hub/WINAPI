@@ -26,10 +26,12 @@ void Player::Initialize(void)
 	m_Direction = Vector3(0.f, 0.f, 0.f);
 	m_LinePoint = Vector3(0.f, 0.f, 0.f);
 
+	m_fTime = 0.f;
 	m_fAngle = 0.f;
 	m_fSpeed = 3.f;
 	m_strKey = "Player";
 	m_bMove = false;
+	m_bJump = false;
 }
 
 void Player::Progress(void)
@@ -39,6 +41,27 @@ void Player::Progress(void)
 	m_LinePoint.fX = m_tTransPos.Position.fX + cosf(m_fAngle *  PI / 180) * 100;
 	m_LinePoint.fY = m_tTransPos.Position.fY + -sinf(m_fAngle *  PI / 180) * 100;
 	
+
+
+
+	if (m_bJump)
+	{
+		m_fTime += 0.1f;
+		m_tTransPos.Position.fY += -sinf(90 * PI / 180) * 5 + (0.98f * m_fTime * m_fTime) / 2;
+
+		if (m_fOldY < m_tTransPos.Position.fY)
+		{
+			m_fTime = 0.0f;
+			m_tTransPos.Position.fY = m_fOldY;
+			m_bJump = false;
+		}
+	}
+
+
+
+
+	//** 마우스 클릭에 의핸 이동.
+	/*
 	if (m_bMove) 
 	{
 		//** 빗변의 길이를 구함.
@@ -62,6 +85,7 @@ void Player::Progress(void)
 			m_bMove = false;
 		}
 	}
+	*/
 }
 
 void Player::Render(HDC _hdc )
@@ -88,34 +112,51 @@ void Player::CheckKey()
 
 	if (KEY_UP & dwKey)
 	{
-		// m_tTransPos.Position.fY -= m_fSpeed;
-
+		if (!m_bJump)
+		{
+			m_bJump = true;
+			m_fOldY = m_tTransPos.Position.fY;
+		}
+		
+		//** 해당하는 각도에 의해 전진
+		/*
 		m_tTransPos.Position.fX +=cosf(m_fAngle *  PI / 180) * m_fSpeed;
 		m_tTransPos.Position.fY +=-sinf(m_fAngle *  PI / 180) * m_fSpeed;
+		*/
 	}
+
 	if (KEY_DOWN & dwKey)
 	{
 		// m_tTransPos.Position.fY += m_fSpeed;
 
+
+		//** 해당하는 각도에 의해 후진
+		/*
 		m_tTransPos.Position.fX -= cosf(m_fAngle *  PI / 180) * m_fSpeed;
 		m_tTransPos.Position.fY -= -sinf(m_fAngle *  PI / 180) * m_fSpeed;
+		*/
 	}
 	
 	if (KEY_LEFT & dwKey)
 	{
-		//m_tTransPos.Position.fX -= 5;
-		m_fAngle += 5.f;
+		m_tTransPos.Position.fX -= 5;
+
+		//m_fAngle += 5.f;
 	}
 	if (KEY_RIGHT & dwKey)
 	{
-		//m_tTransPos.Position.fX += 5;
-		m_fAngle -= 5.f;
+		m_tTransPos.Position.fX += 5;
+
+		//m_fAngle -= 5.f;
 	}
 
 	if (KEY_SPACE & dwKey)
 	{
-		ObjectManager::GetInstance()->AddObject("Bullet",
-			ObjectFactroy<Bullet>::CreateObject(m_tTransPos.Position.fX, m_tTransPos.Position.fY) );
+		Object* pObj = ObjectFactroy<Bullet>::CreateObject(m_tTransPos.Position.fX, m_tTransPos.Position.fY);
+		pObj->SetAngle(m_fAngle);
+		((Bullet*)pObj)->SetBulletAngle();
+
+		ObjectManager::GetInstance()->AddObject(pObj->GetKey(), pObj );
 	}
 
 	if (KEY_RBUTTON & dwKey)

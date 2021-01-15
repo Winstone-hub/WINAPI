@@ -64,6 +64,12 @@
     <Filter Include="소스 파일\01. Object\Bullet">
       <UniqueIdentifier>{e4fe563d-39b5-442a-b981-8531656edb12}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\01. Object\Bullet\BulletBridge">
+      <UniqueIdentifier>{914dd8dd-642a-45e4-8696-82def999d370}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01. Object\Bullet\BulletBridge\NormalBullet">
+      <UniqueIdentifier>{24db50ab-3316-4831-9017-fb401059d495}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainUpdate.h">
@@ -132,6 +138,15 @@
     <ClInclude Include="Bullet.h">
       <Filter>소스 파일\01. Object\Bullet</Filter>
     </ClInclude>
+    <ClInclude Include="Bullet_Bridge.h">
+      <Filter>소스 파일\01. Object\Bullet\BulletBridge</Filter>
+    </ClInclude>
+    <ClInclude Include="Bridge.h">
+      <Filter>헤더 파일\Headres</Filter>
+    </ClInclude>
+    <ClInclude Include="NormalBullet.h">
+      <Filter>소스 파일\01. Object\Bullet\BulletBridge\NormalBullet</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WINAPI_FrameWork.cpp">
@@ -175,6 +190,9 @@
     </ClCompile>
     <ClCompile Include="Bullet.cpp">
       <Filter>소스 파일\01. Object\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="NormalBullet.cpp">
+      <Filter>소스 파일\01. Object\Bullet\BulletBridge\NormalBullet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

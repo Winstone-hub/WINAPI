@@ -5,6 +5,8 @@
 #include "ObjectManager.h"
 #include "ObjectFactroy.h"
 
+#include "NormalBullet.h"
+
 Player::Player()
 {
 }
@@ -140,21 +142,17 @@ void Player::CheckKey()
 	if (KEY_LEFT & dwKey)
 	{
 		m_tTransPos.Position.fX -= 5;
-
-		//m_fAngle += 5.f;
+		m_fAngle += 5.f;
 	}
 	if (KEY_RIGHT & dwKey)
 	{
 		m_tTransPos.Position.fX += 5;
-
-		//m_fAngle -= 5.f;
+		m_fAngle -= 5.f;
 	}
 
 	if (KEY_SPACE & dwKey)
 	{
-		Object* pObj = ObjectFactroy<Bullet>::CreateObject(m_tTransPos.Position.fX, m_tTransPos.Position.fY);
-		pObj->SetAngle(m_fAngle);
-		((Bullet*)pObj)->SetBulletAngle();
+		Object* pObj = CreateBullet<NormalBullet>();
 
 		ObjectManager::GetInstance()->AddObject(pObj->GetKey(), pObj );
 	}
@@ -177,3 +175,14 @@ void Player::CheckKey()
 }
 
 
+template <typename T>
+Object* Player::CreateBullet()
+{
+	Bridge* pBridge = new T;
+
+	//pBridge
+
+	Object* pBullet = ObjectFactroy<Bullet>::CreateObject(m_tTransPos.Position.fX, m_tTransPos.Position.fY, pBridge);
+
+	return pBullet;
+}

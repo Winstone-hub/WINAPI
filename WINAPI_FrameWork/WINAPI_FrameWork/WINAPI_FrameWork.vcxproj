@@ -151,7 +151,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Bridge.h" />
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="Bullet_Bridge.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Define.h" />
     <ClInclude Include="Enum.h" />
@@ -162,6 +164,7 @@
     <ClInclude Include="MainUpdate.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Monster.h" />
+    <ClInclude Include="NormalBullet.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="ObjectFactroy.h" />
     <ClInclude Include="ObjectManager.h" />
@@ -182,6 +185,7 @@
     <ClCompile Include="MainUpdate.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="NormalBullet.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="Player.cpp" />

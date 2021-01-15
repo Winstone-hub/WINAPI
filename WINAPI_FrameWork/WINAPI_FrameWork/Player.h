@@ -21,6 +21,10 @@ public:
 	virtual void Render(HDC _hdc)override;
 	virtual void Release(void)override;
 public:
+	template <typename T>
+	Object* CreateBullet(void);
+
+public:
 	void CheckKey();
 	void SetMoveFalse()
 	{

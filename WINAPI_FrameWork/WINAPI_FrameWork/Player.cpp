@@ -7,8 +7,10 @@
 
 #include "NormalBullet.h"
 
+
 Player::Player()
 {
+
 }
 
 Player::~Player()
@@ -34,6 +36,7 @@ void Player::Initialize(void)
 	m_strKey = "Player";
 	m_bMove = false;
 	m_bJump = false;
+
 }
 
 void Player::Progress(void)
@@ -43,8 +46,6 @@ void Player::Progress(void)
 	m_LinePoint.fX = m_tTransPos.Position.fX + cosf(m_fAngle *  PI / 180) * 100;
 	m_LinePoint.fY = m_tTransPos.Position.fY + -sinf(m_fAngle *  PI / 180) * 100;
 	
-
-
 
 	if (m_bJump)
 	{
@@ -58,8 +59,6 @@ void Player::Progress(void)
 			m_bJump = false;
 		}
 	}
-
-
 
 
 	//** 마우스 클릭에 의핸 이동.
@@ -92,6 +91,8 @@ void Player::Progress(void)
 
 void Player::Render(HDC _hdc )
 {
+
+
 	Ellipse(_hdc,
 		int(m_tTransPos.Position.fX - (m_tTransPos.Scale.fX / 2)),
 		int(m_tTransPos.Position.fY - (m_tTransPos.Scale.fY / 2)),
@@ -101,6 +102,9 @@ void Player::Render(HDC _hdc )
 	MoveToEx(_hdc, m_tTransPos.Position.fX, m_tTransPos.Position.fY, NULL);
 
 	LineTo(_hdc, m_LinePoint.fX, m_LinePoint.fY);
+
+
+
 }
 
 void Player::Release(void)
@@ -178,11 +182,11 @@ void Player::CheckKey()
 template <typename T>
 Object* Player::CreateBullet()
 {
-	Bridge* pBridge = new T;
+	Bridge* Bridge = new T;
 
-	//pBridge
+	((Bullet_Bridge*)Bridge)->SetAngle(m_fAngle);
 
-	Object* pBullet = ObjectFactroy<Bullet>::CreateObject(m_tTransPos.Position.fX, m_tTransPos.Position.fY, pBridge);
+	Object* pBullet = ObjectFactroy<Bullet>::CreateObject(m_LinePoint.fX, m_LinePoint.fY, Bridge);
 
 	return pBullet;
 }

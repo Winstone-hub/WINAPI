@@ -14,6 +14,9 @@ public:
 	virtual void Progress(Transform& _tTransPos)PURE;
 	virtual void Render(HDC _hdc)PURE;
 	virtual void Release(void)PURE;
+
+public:
+	void SetAngle(float _Angle) { m_fAngle = _Angle; }
 public:
 	Bullet_Bridge() {};
 	virtual ~Bullet_Bridge() {};

@@ -30,6 +30,9 @@ public:
 	{
 		m_bMove = false;
 	}
+
+	
+
 public:
 	Player();
 	virtual ~Player();

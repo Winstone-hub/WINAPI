@@ -3,6 +3,7 @@
 #include "Monster.h"
 #include "ObjectFactroy.h"
 #include "ObjectManager.h"
+#include "Bitmap.h"
 
 
 Stage::Stage()
@@ -16,6 +17,13 @@ Stage::~Stage()
 
 void Stage::Initialize(void)
 {
+	Bitmap* Bimmap = (new Bitmap)->LoadBmp((PTCHAR)"../Resource/Player.bmp");
+
+
+
+
+
+
 	Object* pPlayer = ObjectFactroy<Player>::CreateObject(WINSIZEX / 2, WINSIZEY / 2);
 
 	ObjectManager::GetInstance()->AddObject(pPlayer->GetKey(), pPlayer);

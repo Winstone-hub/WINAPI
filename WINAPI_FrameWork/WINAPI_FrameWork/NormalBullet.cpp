@@ -15,6 +15,8 @@ NormalBullet::~NormalBullet()
 void NormalBullet::Initialize(void)
 {
 	m_fSpeed = 15.f;
+
+	
 }
 
 void NormalBullet::Progress(Transform & _tTransPos)

@@ -70,6 +70,12 @@
     <Filter Include="소스 파일\01. Object\Bullet\BulletBridge\NormalBullet">
       <UniqueIdentifier>{24db50ab-3316-4831-9017-fb401059d495}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\99. Manager\BitmapManager">
+      <UniqueIdentifier>{58050ba4-ab84-48a9-8b20-eac6d6c28f9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\99. Manager\BitmapManager\Bitmap">
+      <UniqueIdentifier>{f349624f-e52e-4d08-bfc3-b9e3df22f093}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainUpdate.h">
@@ -147,6 +153,12 @@
     <ClInclude Include="NormalBullet.h">
       <Filter>소스 파일\01. Object\Bullet\BulletBridge\NormalBullet</Filter>
     </ClInclude>
+    <ClInclude Include="BitmapManager.h">
+      <Filter>소스 파일\99. Manager\BitmapManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Bitmap.h">
+      <Filter>소스 파일\99. Manager\BitmapManager\Bitmap</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WINAPI_FrameWork.cpp">
@@ -193,6 +205,12 @@
     </ClCompile>
     <ClCompile Include="NormalBullet.cpp">
       <Filter>소스 파일\01. Object\Bullet\BulletBridge\NormalBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="BitmapManager.cpp">
+      <Filter>소스 파일\99. Manager\BitmapManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Bitmap.cpp">
+      <Filter>소스 파일\99. Manager\BitmapManager\Bitmap</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

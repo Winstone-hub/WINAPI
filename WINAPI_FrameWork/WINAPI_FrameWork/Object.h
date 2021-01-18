@@ -18,7 +18,10 @@ public:
 	string GetKey() { return m_strKey; }
 	Vector3 GetPosition() { return m_tTransPos.Position; }
 	Vector3 GetScale() { return m_tTransPos.Scale; }
-	
+	float GetAngle() { return m_fAngle; }
+
+
+
 	void SetAngle(float _Angle)
 	{
 		m_fAngle = _Angle;

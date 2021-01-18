@@ -1,12 +1,12 @@
 #pragma once
 #include "Scene.h"
 
-class Object;
+class Bitmap;
 class Stage : public Scene
 {
 private:
-	Object* m_pObject1;
-	Object* m_pObject2;
+
+	Bitmap* m_Bimmap;
 public:
 	virtual void Initialize(void)override;
 	virtual void Progress(void)override;

@@ -10,7 +10,7 @@ Bitmap::~Bitmap()
 }
 
 
-Bitmap * Bitmap::LoadBmp(PTCHAR _FileName)
+Bitmap * Bitmap::LoadBmp(LPCWSTR _FileName)
 {
 	m_hdc = GetDC(g_hWnd);
 	m_MemDC = CreateCompatibleDC(m_hdc);

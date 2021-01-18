@@ -31,7 +31,7 @@ void MainUpdate::Progress(void)
 
 void MainUpdate::Render(void)
 {
-	Rectangle(m_hdc, 0, 0, WINSIZEX, WINSIZEY);
+	//Rectangle(m_hdc, 0, 0, WINSIZEX, WINSIZEY);
 
 	SceneManager::GetInstance()->Render(m_hdc);
 }

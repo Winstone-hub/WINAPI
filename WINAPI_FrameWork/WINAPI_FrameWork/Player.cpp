@@ -43,9 +43,9 @@ void Player::Progress(void)
 {
 	CheckKey();
 
-	m_LinePoint.fX = m_tTransPos.Position.fX + cosf(m_fAngle *  PI / 180) * 100;
-	m_LinePoint.fY = m_tTransPos.Position.fY + -sinf(m_fAngle *  PI / 180) * 100;
-	
+	m_LinePoint.fX = m_tTransPos.Position.fX + cosf(m_fAngle * PI / 180) * 100;
+	m_LinePoint.fY = m_tTransPos.Position.fY + -sinf(m_fAngle * PI / 180) * 100;
+
 
 	if (m_bJump)
 	{
@@ -63,7 +63,7 @@ void Player::Progress(void)
 
 	//** 마우스 클릭에 의핸 이동.
 	/*
-	if (m_bMove) 
+	if (m_bMove)
 	{
 		//** 빗변의 길이를 구함.
 		float fLength = sqrt((m_Direction.fX * m_Direction.fX) + (m_Direction.fY * m_Direction.fY));
@@ -89,7 +89,7 @@ void Player::Progress(void)
 	*/
 }
 
-void Player::Render(HDC _hdc )
+void Player::Render(HDC _hdc)
 {
 
 
@@ -123,7 +123,7 @@ void Player::CheckKey()
 			m_bJump = true;
 			m_fOldY = m_tTransPos.Position.fY;
 		}
-		
+
 		//** 해당하는 각도에 의해 전진
 		/*
 		m_tTransPos.Position.fX +=cosf(m_fAngle *  PI / 180) * m_fSpeed;
@@ -142,7 +142,7 @@ void Player::CheckKey()
 		m_tTransPos.Position.fY -= -sinf(m_fAngle *  PI / 180) * m_fSpeed;
 		*/
 	}
-	
+
 	if (KEY_LEFT & dwKey)
 	{
 		m_tTransPos.Position.fX -= 5;
@@ -158,7 +158,7 @@ void Player::CheckKey()
 	{
 		Object* pObj = CreateBullet<NormalBullet>();
 
-		ObjectManager::GetInstance()->AddObject(pObj->GetKey(), pObj );
+		ObjectManager::GetInstance()->AddObject(pObj->GetKey(), pObj);
 	}
 
 	if (KEY_RBUTTON & dwKey)

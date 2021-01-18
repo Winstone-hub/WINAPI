@@ -17,12 +17,7 @@ Stage::~Stage()
 
 void Stage::Initialize(void)
 {
-	Bitmap* Bimmap = (new Bitmap)->LoadBmp((PTCHAR)"../Resource/Player.bmp");
-
-
-
-
-
+	m_Bimmap = (new Bitmap)->LoadBmp(L"../Resource/Player.bmp");
 
 	Object* pPlayer = ObjectFactroy<Player>::CreateObject(WINSIZEX / 2, WINSIZEY / 2);
 
@@ -46,7 +41,13 @@ void Stage::Progress(void)
 
 void Stage::Render(HDC _hdc)
 {
-	ObjectManager::GetInstance()->Render(_hdc);
+	BitBlt(_hdc,			// 복사해 넣을 그림판 ?!
+		0, 0, 582, 497,		// 복사할 영역 시작점으로부터 끝부분까지
+		m_Bimmap->GetMemDC(),		// 복사할 이미지
+		75, 95,				// 스케일을 잡아준다.
+		SRCCOPY);			// 소스 영역을 대상 영역에 복사한다.
+
+	//ObjectManager::GetInstance()->Render(_hdc);
 }
 
 void Stage::Release(void)

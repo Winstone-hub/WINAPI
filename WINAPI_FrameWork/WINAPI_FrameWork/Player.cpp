@@ -28,9 +28,6 @@ void Player::Initialize(void)
 	m_tTransPos.Scale = Vector3(679 / 7, 75.f);
 
 
-
-
-
 	m_tFrame = Frame(0, 7, 0, 0, 500);
 	/*
 	Frame(int _StartFrame, 출력을 시작할 이미지 시작점.
@@ -63,7 +60,6 @@ void Player::Initialize(void)
 	m_strKey = "Player";
 	m_bMove = false;
 	m_bJump = false;
-
 
 
 
@@ -221,6 +217,16 @@ void Player::CheckKey()
 		m_Direction.fY = m_ptMouse.y - m_tTransPos.Position.fY;
 
 		m_TargetPoint = Vector3((float)m_ptMouse.x, (float)m_ptMouse.y);
+	}
+
+
+
+	//** 마우스 좌클릭 이벤트가 발생하면 폭발하는 이벤트 제작 예정.
+	if (KEY_LBUTTON & dwKey)
+	{
+		//** 마우스 좌표를 받아옴.
+		GetCursorPos(&m_ptMouse);
+		ScreenToClient(g_hWnd, &m_ptMouse);
 	}
 }
 

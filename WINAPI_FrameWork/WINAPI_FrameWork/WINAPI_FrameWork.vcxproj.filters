@@ -76,6 +76,12 @@
     <Filter Include="소스 파일\99. Manager\BitmapManager\Bitmap">
       <UniqueIdentifier>{f349624f-e52e-4d08-bfc3-b9e3df22f093}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\01. Object\ParticleBridge">
+      <UniqueIdentifier>{9bfcd32b-fe49-4627-9555-e109f8ded3a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01. Object\ParticleBridge\Explosion">
+      <UniqueIdentifier>{01beb65d-65eb-4731-bb45-b2ec1043bd3a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainUpdate.h">
@@ -159,6 +165,12 @@
     <ClInclude Include="Bitmap.h">
       <Filter>소스 파일\99. Manager\BitmapManager\Bitmap</Filter>
     </ClInclude>
+    <ClInclude Include="Explosion.h">
+      <Filter>소스 파일\01. Object\ParticleBridge\Explosion</Filter>
+    </ClInclude>
+    <ClInclude Include="Particle_Bridge.h">
+      <Filter>소스 파일\01. Object\ParticleBridge</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WINAPI_FrameWork.cpp">
@@ -211,6 +223,9 @@
     </ClCompile>
     <ClCompile Include="Bitmap.cpp">
       <Filter>소스 파일\99. Manager\BitmapManager\Bitmap</Filter>
+    </ClCompile>
+    <ClCompile Include="Explosion.cpp">
+      <Filter>소스 파일\01. Object\ParticleBridge\Explosion</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

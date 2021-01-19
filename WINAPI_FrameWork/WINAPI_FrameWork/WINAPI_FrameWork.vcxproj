@@ -160,6 +160,7 @@
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Define.h" />
     <ClInclude Include="Enum.h" />
+    <ClInclude Include="Explosion.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Include.h" />
     <ClInclude Include="InputManager.h" />
@@ -171,6 +172,7 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="ObjectFactroy.h" />
     <ClInclude Include="ObjectManager.h" />
+    <ClInclude Include="Particle_Bridge.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Scene.h" />
@@ -185,6 +187,7 @@
     <ClCompile Include="BitmapManager.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
+    <ClCompile Include="Explosion.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Logo.cpp" />
     <ClCompile Include="MainUpdate.cpp" />

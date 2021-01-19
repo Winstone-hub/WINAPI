@@ -1,5 +1,6 @@
 #pragma once
 #include "Include.h"
+#include "Bitmap.h"
 
 class Object
 {
@@ -8,13 +9,26 @@ protected:
 	string m_strKey;
 	float m_fSpeed;
 	float m_fAngle;
+
+	static map<string, Bitmap*>* m_ImageList;
+public:
+	static void SetImageList(map<string, Bitmap*>* _ImageList)
+	{
+		m_ImageList = _ImageList;
+	}
 public:
 	virtual void Initialize()PURE;
 	virtual void Progress()PURE;
 	virtual void Render(HDC _hdc)PURE;
 	virtual void Release()PURE;
 
+
+
+
+
 public:
+
+
 	string GetKey() { return m_strKey; }
 	Vector3 GetPosition() { return m_tTransPos.Position; }
 	Vector3 GetScale() { return m_tTransPos.Scale; }

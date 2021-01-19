@@ -6,7 +6,8 @@
 #include "ObjectFactroy.h"
 
 #include "NormalBullet.h"
-
+#include "Bitmap.h"
+#include "BitmapManager.h"
 
 Player::Player()
 {
@@ -36,7 +37,6 @@ void Player::Initialize(void)
 	m_strKey = "Player";
 	m_bMove = false;
 	m_bJump = false;
-
 }
 
 void Player::Progress(void)
@@ -91,20 +91,13 @@ void Player::Progress(void)
 
 void Player::Render(HDC _hdc)
 {
-
-
-	Ellipse(_hdc,
-		int(m_tTransPos.Position.fX - (m_tTransPos.Scale.fX / 2)),
-		int(m_tTransPos.Position.fY - (m_tTransPos.Scale.fY / 2)),
-		int(m_tTransPos.Position.fX + (m_tTransPos.Scale.fX / 2)),
-		int(m_tTransPos.Position.fY + (m_tTransPos.Scale.fY / 2)));
-
-	MoveToEx(_hdc, m_tTransPos.Position.fX, m_tTransPos.Position.fY, NULL);
-
-	LineTo(_hdc, m_LinePoint.fX, m_LinePoint.fY);
-
-
-
+	TransparentBlt(_hdc,	  // 복사해 넣을 그림판 ?!
+		0, 0, 				// 복사할 영역 시작점으로부터
+		95, 75,				// 복사할 영역 끝부분까지
+		(*m_ImageList)[m_strKey]->GetMemDC(),	// 복사할 이미지 (복사대상)
+		0, 0, 			// 복사할 시작점
+		95, 75,			// 복사할 끝부분
+		RGB(255, 0, 255));		// 해당 색상을 제외
 }
 
 void Player::Release(void)

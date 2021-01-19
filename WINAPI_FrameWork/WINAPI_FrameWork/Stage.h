@@ -4,9 +4,6 @@
 class Bitmap;
 class Stage : public Scene
 {
-private:
-
-	Bitmap* m_Bimmap;
 public:
 	virtual void Initialize(void)override;
 	virtual void Progress(void)override;

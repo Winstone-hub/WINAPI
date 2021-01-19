@@ -1,6 +1,8 @@
 #pragma once
 #include "Object.h"
 
+
+class Bitmap;
 class Player : public Object
 {
 private:
@@ -15,6 +17,7 @@ private:
 
 	float m_fOldY;
 	float m_fTime;
+
 public:
 	virtual void Initialize(void)override;
 	virtual void Progress(void)override;

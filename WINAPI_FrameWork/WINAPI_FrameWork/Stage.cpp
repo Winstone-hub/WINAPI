@@ -24,24 +24,22 @@ void Stage::Initialize(void)
 
 	ObjectManager::GetInstance()->AddObject(pPlayer->GetKey(), pPlayer);
 
-	srand(GetTickCount64());
+	srand((int)GetTickCount64());
 
 	for (int i = 0; i < 8; i++)
 	{
 		Object* pMonster = ObjectFactroy<Monster>::CreateObject(
-			rand() % WINSIZEX - 50, rand() % WINSIZEY - 50);
+			float(rand() % WINSIZEX - 50), 
+			float(rand() % WINSIZEY - 50) );
 
 		ObjectManager::GetInstance()->AddObject(pMonster->GetKey() , pMonster);
 	}
-
 
 	map<string, Bitmap*>* m_mapImageList = BitmapManager::GetInstance()->GetImageList();
 
 
 	m_mapImageList->insert(
 		make_pair(pPlayer->GetKey(), (new Bitmap)->LoadBmp(L"../Resource/Player.bmp")));
-
-
 
 
 	Object::SetImageList(m_mapImageList);

@@ -22,3 +22,27 @@ typedef struct tagTransform
 	Vector3 Scale;
 
 }Transform;
+
+
+typedef struct tagFrame
+{
+	int StartFrame;
+	int Count;
+	int LastFrame;
+	int Scene;
+	DWORD FrameTime;
+
+	tagFrame() {};
+
+	tagFrame(int _StartFrame, 
+		int _Count, 
+		int _LastFrame, 
+		int _Scene,
+		DWORD _FrameTime)
+		: StartFrame(_StartFrame),
+		Count(_Count),
+		LastFrame(_LastFrame),
+		Scene(_Scene),
+		FrameTime(_FrameTime) {};
+
+}Frame;

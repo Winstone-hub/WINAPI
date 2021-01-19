@@ -6,9 +6,14 @@ class Object
 {
 protected:
 	Transform m_tTransPos;
+	Frame m_tFrame;
+
 	string m_strKey;
+
 	float m_fSpeed;
 	float m_fAngle;
+
+	ULONGLONG m_dwFrameTime;
 
 	static map<string, Bitmap*>* m_ImageList;
 public:

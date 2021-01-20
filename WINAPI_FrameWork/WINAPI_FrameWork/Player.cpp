@@ -9,6 +9,7 @@
 #include "Bitmap.h"
 #include "BitmapManager.h"
 
+
 Player::Player()
 {
 
@@ -25,10 +26,11 @@ void Player::Initialize(void)
 	m_ptMouse = { 0, 0 };
 	m_tTransPos.Position = Vector3(WINSIZEX / 2.f, WINSIZEY / 2.f);
 	m_tTransPos.Rotation = Vector3(0.f, 0.f, 0.f);
-	m_tTransPos.Scale = Vector3(679 / 7, 75.f);
+	m_tTransPos.Scale = Vector3(679 / 7, /*580*/75.f);
 
 
-	m_tFrame = Frame(0, 7, 0, 0, 500);
+	m_tFrame = Frame(0, 0, 7, 0, 150);
+
 	/*
 	Frame(int _StartFrame, 출력을 시작할 이미지 시작점.
 	int _Count,				시작점부터 끝지점까지 순차적으로 출력지점을 이동시켜줌
@@ -97,7 +99,7 @@ void Player::Progress(void)
 		if (m_tFrame.Count > m_tFrame.LastFrame)
 		{
 			//** 크다면 다시 초기 이미지 값으로 되돌려 출력하게 한다.
-			m_tFrame.Count = 0;
+			m_tFrame.Count = m_tFrame.StartFrame;
 		}
 		else
 			m_tFrame.Count++;	//** 별일 없다면다음 이미지를 출력하게 한다.

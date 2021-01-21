@@ -19,6 +19,7 @@ public:
 	void SetScene(SCENEIDS _state);
 	void Progress();
 	void Render(HDC _hdc);
+	void Release();
 
 private:
 	SceneManager();

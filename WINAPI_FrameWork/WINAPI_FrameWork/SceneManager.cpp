@@ -12,6 +12,7 @@ SceneManager::SceneManager() : m_SceneState(NULL)
 
 SceneManager::~SceneManager()
 {
+	Release();
 }
 
 
@@ -52,5 +53,10 @@ void SceneManager::Progress()
 void SceneManager::Render(HDC _hdc)
 {
 	m_SceneState->Render(_hdc);
+}
+
+void SceneManager::Release()
+{
+	m_SceneState->Release();
 }
 

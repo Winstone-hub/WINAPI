@@ -13,8 +13,6 @@ ObjectManager::~ObjectManager()
 	Release();
 }
 
-
-
 void ObjectManager::AddObject(string _strKey, Object * _Object)
 {
 	map<string, list<Object*>>::iterator iter = m_mapObjectList.find(_strKey);
@@ -42,6 +40,7 @@ void ObjectManager::Progress(void)
 		}
 	}
 
+	/*
 	map<string, list<Object*>>::iterator iterPlayer = m_mapObjectList.find("Player");
 	map<string, list<Object*>>::iterator iterMonster = m_mapObjectList.find("Monster");
 
@@ -60,6 +59,7 @@ void ObjectManager::Progress(void)
 		else
 			++iter;
 	}
+	*/
 }
 
 void ObjectManager::Render(HDC _hdc)

@@ -54,7 +54,6 @@ void Player::Initialize(void)
 
 	m_TargetPoint = Vector3(0.f, 0.f, 0.f);
 	m_Direction = Vector3(0.f, 0.f, 0.f);
-	m_LinePoint = Vector3(0.f, 0.f, 0.f);
 
 	m_fTime = 0.f;
 	m_fAngle = 0.f;

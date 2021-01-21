@@ -55,7 +55,7 @@ void SoundManager::OnPlaySound(string _Ksy, SOUND_CHANNEL_IDS _SoundState)
 {
 	map<string, FMOD_SOUND*>::iterator iter = m_pSoundList.find(_Ksy);
 
-	FMOD_System_PlaySound(m_pSystem, FMOD_CHANNEL_FREE, iter->second, 0, &m_pChannel[_SoundState]);
+	FMOD_System_PlaySound(m_pSystem, iter->second, NULL, false, &m_pChannel[_SoundState]);
 }
 
 void SoundManager::OnCloseSound(SOUND_CHANNEL_IDS _SoundState)

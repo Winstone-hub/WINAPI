@@ -18,11 +18,13 @@ Stage::~Stage()
 
 void Stage::Initialize(void)
 {
-	
-
 	Object* pPlayer = ObjectFactroy<Player>::CreateObject(WINSIZEX / 2, WINSIZEY / 2);
 
 	ObjectManager::GetInstance()->AddObject(pPlayer->GetKey(), pPlayer);
+
+
+
+
 
 	srand((int)GetTickCount64());
 
@@ -39,7 +41,7 @@ void Stage::Initialize(void)
 
 
 	m_mapImageList->insert(
-		make_pair(pPlayer->GetKey(), (new Bitmap)->LoadBmp(L"../Resource/Player.bmp")));
+		make_pair(pPlayer->GetKey(), (new Bitmap)->LoadBmp(L"../Resource/Image/Player.bmp")));
 
 
 	Object::SetImageList(m_mapImageList);

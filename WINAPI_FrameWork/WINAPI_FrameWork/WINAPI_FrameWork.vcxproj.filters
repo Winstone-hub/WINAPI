@@ -82,6 +82,9 @@
     <Filter Include="소스 파일\01. Object\ParticleBridge\Explosion">
       <UniqueIdentifier>{01beb65d-65eb-4731-bb45-b2ec1043bd3a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\99. Manager\SoundManager">
+      <UniqueIdentifier>{3cc06947-a00a-42d9-959b-8052ee9588d2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainUpdate.h">
@@ -171,6 +174,9 @@
     <ClInclude Include="Particle_Bridge.h">
       <Filter>소스 파일\01. Object\ParticleBridge</Filter>
     </ClInclude>
+    <ClInclude Include="SoundManager.h">
+      <Filter>소스 파일\99. Manager\SoundManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WINAPI_FrameWork.cpp">
@@ -226,6 +232,9 @@
     </ClCompile>
     <ClCompile Include="Explosion.cpp">
       <Filter>소스 파일\01. Object\ParticleBridge\Explosion</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>소스 파일\99. Manager\SoundManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

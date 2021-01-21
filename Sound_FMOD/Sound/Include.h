@@ -9,7 +9,13 @@
 using namespace std;
 
 
+
+
+
 #include <fmod.h>
 
 #include "Enum.h"
 #include "Struct.h"
+
+
+#pragma comment(lib, "fmod_vc.lib")

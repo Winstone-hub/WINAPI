@@ -221,8 +221,6 @@ void Player::CheckKey()
 		m_TargetPoint = Vector3((float)m_ptMouse.x, (float)m_ptMouse.y);
 	}
 
-
-
 	//** 마우스 좌클릭 이벤트가 발생하면 폭발하는 이벤트 제작 예정.
 	if (KEY_LBUTTON & dwKey)
 	{

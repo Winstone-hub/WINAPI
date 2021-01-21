@@ -13,15 +13,10 @@ public:
 			m_pInstance = new BitmapManager;
 		return m_pInstance;
 	}
-
 private:
 	map<string, Bitmap*> m_mapImageList;
-
 public:
-	map<string, Bitmap*>* GetImageList()
-	{
-		return &m_mapImageList;
-	}
+	map<string, Bitmap*>* GetImageList() { return &m_mapImageList; }
 private:
 	BitmapManager();
 public:

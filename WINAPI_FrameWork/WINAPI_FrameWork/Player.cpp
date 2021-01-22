@@ -5,9 +5,10 @@
 #include "ObjectManager.h"
 #include "ObjectFactroy.h"
 
-#include "NormalBullet.h"
 #include "Bitmap.h"
+#include "NormalBullet.h"
 #include "BitmapManager.h"
+#include "SoundManager.h"
 
 
 Player::Player()
@@ -220,11 +221,11 @@ void Player::CheckKey()
 		m_TargetPoint = Vector3((float)m_ptMouse.x, (float)m_ptMouse.y);
 	}
 
-
-
 	//** 마우스 좌클릭 이벤트가 발생하면 폭발하는 이벤트 제작 예정.
 	if (KEY_LBUTTON & dwKey)
 	{
+		SoundManager::GetInstance()->OnPlaySound("bleeps", SOUND_CHANNEL_ID_EFFECT);
+
 		//** 마우스 좌표를 받아옴.
 		GetCursorPos(&m_ptMouse);
 		ScreenToClient(g_hWnd, &m_ptMouse);

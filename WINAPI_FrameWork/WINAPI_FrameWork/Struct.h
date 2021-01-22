@@ -46,3 +46,12 @@ typedef struct tagFrame
 		FrameTime(_FrameTime) {};
 
 }Frame;
+
+
+
+typedef struct tagSoundInfo
+{
+	string Ksy;
+	SOUND_CHANNEL_IDS SoundState;
+
+}SOUNDINFO;

@@ -82,6 +82,12 @@
     <Filter Include="소스 파일\01. Object\ParticleBridge\Explosion">
       <UniqueIdentifier>{01beb65d-65eb-4731-bb45-b2ec1043bd3a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\01. Object\BackGround">
+      <UniqueIdentifier>{63cbf6ec-b3b1-4b39-8a14-9fd4a83de020}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\99. Manager\SoundManager">
+      <UniqueIdentifier>{9b72b30e-b023-45b5-b6da-e5d1fb723652}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainUpdate.h">
@@ -171,6 +177,12 @@
     <ClInclude Include="Particle_Bridge.h">
       <Filter>소스 파일\01. Object\ParticleBridge</Filter>
     </ClInclude>
+    <ClInclude Include="BackGround.h">
+      <Filter>소스 파일\01. Object\BackGround</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundManager.h">
+      <Filter>소스 파일\99. Manager\SoundManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WINAPI_FrameWork.cpp">
@@ -226,6 +238,12 @@
     </ClCompile>
     <ClCompile Include="Explosion.cpp">
       <Filter>소스 파일\01. Object\ParticleBridge\Explosion</Filter>
+    </ClCompile>
+    <ClCompile Include="BackGround.cpp">
+      <Filter>소스 파일\01. Object\BackGround</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>소스 파일\99. Manager\SoundManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

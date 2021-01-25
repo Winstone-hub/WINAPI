@@ -24,10 +24,13 @@ void Bullet::Initialize(void)
 		m_pBridge->Initialize();
 }
 
-void Bullet::Progress(void)
+int Bullet::Progress(void)
 {
 	if (m_pBridge)
 		m_pBridge->Progress(m_tTransPos);
+
+
+	return 0;
 }
 
 void Bullet::Render(HDC _hdc)

@@ -29,10 +29,6 @@ void Stage::Initialize(void)
 	ObjectManager::GetInstance()->AddObject(pBackGround->GetKey(), pBackGround);
 	
 
-	
-
-
-
 	/*
 	for (int i = 0; i < 8; i++)
 	{
@@ -44,26 +40,9 @@ void Stage::Initialize(void)
 	}
 	*/
 
+
 	//** BackBuffer 설정
 	m_pBackBuffer = (new Bitmap)->LoadBmp(L"../Resource/Image/Backbuffer.bmp");
-
-
-	//** 이미지 리스트
-	map<string, Bitmap*>* pImageList = BitmapManager::GetInstance()->GetImageList();
-
-	//** 스테이지 배경 이미지 삽입.
-	pImageList->insert(
-		make_pair("BackGround", (new Bitmap)->LoadBmp(L"../Resource/Image/BackGround.bmp")));
-
-	//** 플레이어 이미지 삽입
-	pImageList->insert(
-		make_pair(pPlayer->GetKey(), (new Bitmap)->LoadBmp(L"../Resource/Image/Player.bmp")));
-	
-	//** 몬스터 이미지 삽입
-	pImageList->insert(make_pair("Monster", (new Bitmap)->LoadBmp(L"../Resource/Image/Rect.bmp")));
-	
-	//** 리스트에 넣어둔 이미지들을 오브젝트 클레스에 보관.
-	Object::SetImageList(pImageList);
 }
 
 void Stage::Progress(void)

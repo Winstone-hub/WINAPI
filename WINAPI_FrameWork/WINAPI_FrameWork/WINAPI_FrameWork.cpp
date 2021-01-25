@@ -68,7 +68,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	Main.Initialize();
 
 
-	DWORD dwTime = GetTickCount64();
+	ULONGLONG Time = GetTickCount64();
 
 	while (msg.message != WM_QUIT)
 	{
@@ -79,9 +79,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		}
 		else
 		{
-			if (dwTime < GetTickCount64())
+			if (Time < GetTickCount64())
 			{
-				dwTime = GetTickCount64();
+                Time = GetTickCount64();
 
 				Main.Progress();
 				Main.Render();

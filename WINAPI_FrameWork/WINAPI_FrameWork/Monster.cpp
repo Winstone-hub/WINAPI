@@ -23,9 +23,9 @@ void Monster::Initialize(void)
 	m_strKey = "Monster";
 }
 
-void Monster::Progress(void)
+int Monster::Progress(void)
 {
-
+	return 0;
 }
 
 void Monster::Render(HDC _hdc)

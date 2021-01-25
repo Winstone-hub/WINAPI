@@ -69,7 +69,7 @@ void Player::Initialize(void)
 	m_dwFrameTime = GetTickCount64();
 }
 
-void Player::Progress(void)
+int Player::Progress(void)
 {
 	CheckKey();
 
@@ -134,6 +134,8 @@ void Player::Progress(void)
 		}
 	}
 	*/
+
+	return 0;
 }
 
 void Player::Render(HDC _hdc)

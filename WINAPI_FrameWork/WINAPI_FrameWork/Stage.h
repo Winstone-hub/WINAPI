@@ -1,7 +1,7 @@
 #pragma once
 #include "Scene.h"
 
-class Bitmap;
+
 class Stage : public Scene
 {
 private:

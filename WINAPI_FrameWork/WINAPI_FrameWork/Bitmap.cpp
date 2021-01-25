@@ -29,6 +29,7 @@ void Bitmap::Release()
 {
 	SelectObject(m_MemDC, m_Oldbitmap);
 
+	DeleteObject(&m_Oldbitmap);
 	DeleteObject(m_bitmap);
 	DeleteDC(m_MemDC);
 }

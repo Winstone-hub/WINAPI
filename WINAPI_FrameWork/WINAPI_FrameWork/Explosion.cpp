@@ -17,9 +17,9 @@ void Explosion::Initialize(void)
 
 }
 
-void Explosion::Progress(void)
+int Explosion::Progress(void)
 {
-
+	return 0;
 }
 
 void Explosion::Render(HDC _hdc)

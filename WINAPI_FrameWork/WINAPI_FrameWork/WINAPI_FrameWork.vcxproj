@@ -161,6 +161,7 @@
     <ClInclude Include="Bridge.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Bullet_Bridge.h" />
+    <ClInclude Include="Button.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Define.h" />
     <ClInclude Include="Enum.h" />
@@ -171,6 +172,7 @@
     <ClInclude Include="Logo.h" />
     <ClInclude Include="MainUpdate.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="MenuBack.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="NormalBullet.h" />
     <ClInclude Include="Object.h" />
@@ -192,12 +194,14 @@
     <ClCompile Include="Bitmap.cpp" />
     <ClCompile Include="BitmapManager.cpp" />
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="Explosion.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Logo.cpp" />
     <ClCompile Include="MainUpdate.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="MenuBack.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="NormalBullet.cpp" />
     <ClCompile Include="Object.cpp" />

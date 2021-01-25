@@ -26,17 +26,29 @@ void Logo::Initialize(void)
 
 
 
+
+	/*********************************
+	   **  Menu image is insert. **
+	**********************************/
+
 	//** Menu 백그라운드 이미지 삽입
 	m_pImageList->insert(
 		make_pair("MenuBack", (new Bitmap)->LoadBmp(L"../Resource/Image/Menu/MenuBack.bmp")));
 
 
+	//** Menu Button 이미지 삽입
 	m_pImageList->insert(
 		make_pair("PlayButton", (new Bitmap)->LoadBmp(L"../Resource/Image/Menu/PlayButton.bmp")));
 
 
-	
 
+
+
+
+
+	/*********************************
+	   **  Stage image is insert. **
+	**********************************/
 
 	//** 스테이지 배경 이미지 삽입.
 	m_pImageList->insert(

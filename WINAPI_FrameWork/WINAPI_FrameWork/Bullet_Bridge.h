@@ -1,7 +1,4 @@
 #pragma once
-
-
-#pragma once
 #include "Bridge.h"
 
 class Bullet_Bridge : public Bridge

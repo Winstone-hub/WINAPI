@@ -41,8 +41,7 @@ void Stage::Initialize(void)
 	*/
 
 
-	//** BackBuffer 설정
-	m_pBackBuffer = (new Bitmap)->LoadBmp(L"../Resource/Image/Backbuffer.bmp");
+	
 }
 
 void Stage::Progress(void)
@@ -54,8 +53,10 @@ void Stage::Progress(void)
 void Stage::Render(HDC _hdc)
 {
 	//** 스테이지 이미지가 출력된 버퍼 위에 오브텍드 이미지를 출력함.
-	ObjectManager::GetInstance()->Render(m_pBackBuffer->GetMemDC());
+	ObjectManager::GetInstance()->Render(_hdc);
 
+
+	/*
 	//** 최종 이미지를 HDC에 출력함.
 	BitBlt(_hdc,	//** 그림을 그려 넣을곳
 		(WINSIZEX / 2) - (1280 / 2),	//** 이미지가 출력될 시작점 X
@@ -64,6 +65,7 @@ void Stage::Render(HDC _hdc)
 		m_pBackBuffer->GetMemDC(),	//** 복사할 이미지
 		0, 0,	// 출력 시작점 좌표
 		SRCCOPY);	// 고속 복사
+	*/
 }
 
 void Stage::Release(void)

@@ -22,7 +22,7 @@ public:
 
 	static bool CollRect(Object* _pTempObj, Object* _pDestObj)
 	{
-		if (_pTempObj->GetPosition().fX + (_pTempObj->GetScale().fX / 2) > _pDestObj->GetPosition().fX - (_pDestObj->GetScale().fX / 2) &&
+		if ( _pTempObj->GetPosition().fX + (_pTempObj->GetScale().fX / 2) > _pDestObj->GetPosition().fX - (_pDestObj->GetScale().fX / 2) &&
 			 _pTempObj->GetPosition().fX - (_pTempObj->GetScale().fX / 2) < _pDestObj->GetPosition().fX + (_pDestObj->GetScale().fX / 2) &&
 			 _pTempObj->GetPosition().fY + (_pTempObj->GetScale().fY / 2) > _pDestObj->GetPosition().fY - (_pDestObj->GetScale().fY / 2) &&
 			 _pTempObj->GetPosition().fY - (_pTempObj->GetScale().fY / 2) < _pDestObj->GetPosition().fY + (_pDestObj->GetScale().fY / 2))

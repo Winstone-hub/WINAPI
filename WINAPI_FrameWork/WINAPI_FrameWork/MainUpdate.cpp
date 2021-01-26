@@ -3,6 +3,9 @@
 #include "InputManager.h"
 #include "SoundManager.h"
 
+#include "Bitmap.h"
+#include "BitmapManager.h"
+
 MainUpdate::MainUpdate()
 {
 

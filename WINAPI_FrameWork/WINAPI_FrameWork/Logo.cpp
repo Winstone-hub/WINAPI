@@ -41,9 +41,8 @@ void Logo::Initialize(void)
 		make_pair("PlayButton", (new Bitmap)->LoadBmp(L"../Resource/Image/Menu/PlayButton.bmp")));
 
 
-
-
-
+	m_pImageList->insert(
+		make_pair("BackBuffer", (new Bitmap)->LoadBmp(L"../Resource/Image/Backbuffer.bmp")));
 
 
 	/*********************************

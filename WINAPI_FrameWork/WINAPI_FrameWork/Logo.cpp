@@ -64,12 +64,14 @@ void Logo::Initialize(void)
 	Object::SetImageList(m_pImageList);
 }
 
-void Logo::Progress(void)
+int Logo::Progress(void)
 {
 	DWORD dwKey = InputManager::GetInstance()->GetKey();
 
 	if (dwKey & KEY_RETURN /*|| dwKey & KEY_ESCAPE*/)
 		SceneManager::GetInstance()->SetScene(SCENEID_MENU);
+
+		return 0;
 }
 
 void Logo::Render(HDC _hdc)

@@ -41,9 +41,11 @@ void Stage::Initialize(void)
 	*/
 }
 
-void Stage::Progress(void)
+int Stage::Progress(void)
 {
 	ObjectManager::GetInstance()->Progress();
+
+	return 0;
 }
 
 

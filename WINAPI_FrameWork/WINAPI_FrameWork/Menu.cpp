@@ -29,7 +29,7 @@ void Menu::Initialize(void)
 	}
 }
 
-void Menu::Progress(void)
+int Menu::Progress(void)
 {
 	ObjectManager::GetInstance()->Progress();
 
@@ -40,8 +40,20 @@ void Menu::Progress(void)
 		if (iResult == 1)
 		{
 			SceneManager::GetInstance()->SetScene(SCENEID_STAGE);
+			return 0;
+		}
+		else if (iResult == 2)
+		{
+			return 0;
+		}
+		else if (iResult == 3)
+		{
+			DestroyWindow(g_hWnd);
+			return 0;
 		}
 	}
+
+	return 0;
 }
 
 void Menu::Render(HDC _hdc)

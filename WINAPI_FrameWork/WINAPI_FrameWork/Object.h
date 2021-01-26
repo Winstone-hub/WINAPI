@@ -34,10 +34,10 @@ public:
 public:
 
 
-	string GetKey() { return m_strKey; }
-	Vector3 GetPosition() { return m_tTransPos.Position; }
-	Vector3 GetScale() { return m_tTransPos.Scale; }
-	float GetAngle() { return m_fAngle; }
+	string GetKey() const { return m_strKey; }
+	Vector3 GetPosition() const { return m_tTransPos.Position; }
+	Vector3 GetScale() const { return m_tTransPos.Scale; }
+	float GetAngle() const { return m_fAngle; }
 
 
 

@@ -50,12 +50,10 @@ void Logo::Initialize(void)
 	**********************************/
 
 	//** 스테이지 배경 이미지 삽입.
-	m_pImageList->insert(
-		make_pair("BackGround", (new Bitmap)->LoadBmp(L"../Resource/Image/BackGround.bmp")));
+	(*m_pImageList)["BackGround"] = (new Bitmap)->LoadBmp(L"../Resource/Image/BackGround.bmp");
 
 	//** 플레이어 이미지 삽입
-	m_pImageList->insert(
-		make_pair("Player", (new Bitmap)->LoadBmp(L"../Resource/Image/Player.bmp")));
+	(*m_pImageList)["Player"] = (new Bitmap)->LoadBmp(L"../Resource/Image/Player.bmp");
 
 	//** 몬스터 이미지 삽입
 	m_pImageList->insert(make_pair("Monster", (new Bitmap)->LoadBmp(L"../Resource/Image/Rect.bmp")));

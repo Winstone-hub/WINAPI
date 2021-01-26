@@ -15,7 +15,7 @@ public:
 private:
 	DWORD m_dwKey;
 public:
-	DWORD GetKey() { return m_dwKey; }
+	DWORD GetKey() const { return m_dwKey; }
 
 	void UpdateKey();
 

@@ -1,8 +1,11 @@
 #pragma once
 #include "Scene.h"
 
+class Object;
 class Menu : public Scene
 {
+private:
+	Object* m_pButton[3];
 public:
 	virtual void Initialize(void)override;
 	virtual void Progress(void)override;

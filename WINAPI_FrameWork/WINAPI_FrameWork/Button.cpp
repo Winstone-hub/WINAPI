@@ -1,5 +1,7 @@
 #include "Button.h"
 #include "CollisionManager.h"
+#include "InputManager.h"
+
 
 Button::Button()
 {
@@ -44,6 +46,18 @@ int Button::Progress(void)
 
 		if (m_iScene > 8)
 			m_iScene = 0;
+
+		if (InputManager::GetInstance()->GetKey() & KEY_LBUTTON)
+		{
+			if (m_strKey == "PlayButton")
+				return 1;
+
+			else if (m_strKey == "Option")
+				return 2;
+
+			else if (m_strKey == "Exit")
+				return 3;
+		}
 	}
 
 	return 0;

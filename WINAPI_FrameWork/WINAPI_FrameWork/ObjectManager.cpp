@@ -1,6 +1,7 @@
 #include "ObjectManager.h"
 #include "Player.h"
 #include "CollisionManager.h"
+#include "SceneManager.h"
 
 ObjectManager* ObjectManager::m_pInstance = NULL;
 

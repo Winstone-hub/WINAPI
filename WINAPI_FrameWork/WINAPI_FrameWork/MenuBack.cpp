@@ -14,7 +14,7 @@ void MenuBack::Initialize(void)
 {
 	m_tTransPos.Position = Vector3(0, 0);
 	m_tTransPos.Rotation = Vector3(0.f, 0.f, 0.f);
-	m_tTransPos.Scale = Vector3(1000, 495);
+	m_tTransPos.Scale = Vector3(768, 1024);
 
 	m_fAngle = 0.f;
 	m_fSpeed = 5.f;
@@ -41,6 +41,7 @@ void MenuBack::Render(HDC _hdc)
 		(int)m_tTransPos.Scale.fY,		// 출력할 이미지의 크기 만큼 Y
 		RGB(255, 0, 255));		// 해당 색상을 제외
 }
+
 
 void MenuBack::Release(void)
 {

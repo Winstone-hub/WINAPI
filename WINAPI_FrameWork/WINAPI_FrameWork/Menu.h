@@ -5,7 +5,7 @@ class Object;
 class Menu : public Scene
 {
 private:
-	Object* m_pButton[3];
+	vector<Object*> m_pButtonList;
 public:
 	virtual void Initialize(void)override;
 	virtual int Progress(void)override;

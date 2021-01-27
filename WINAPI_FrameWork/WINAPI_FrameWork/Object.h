@@ -17,46 +17,25 @@ protected:
 
 	static map<string, Bitmap*>* m_ImageList;
 public:
-	static void SetImageList(map<string, Bitmap*>* _ImageList)
-	{
-		m_ImageList = _ImageList;
-	}
+	static void SetImageList(map<string, Bitmap*>* _ImageList) { m_ImageList = _ImageList; }
 public:
 	virtual void Initialize()PURE;
 	virtual int Progress()PURE;
 	virtual void Render(HDC _hdc)PURE;
 	virtual void Release()PURE;
 
-
-
-
-
 public:
-
-
 	string GetKey() const { return m_strKey; }
-	Vector3 GetPosition() const { return m_tTransPos.Position; }
-	Vector3 GetScale() const { return m_tTransPos.Scale; }
+	void SetKey(string _Key) { m_strKey = _Key; }
+
 	float GetAngle() const { return m_fAngle; }
+	void SetAngle(float _Angle) { m_fAngle = _Angle; }
 
+	Vector3 GetPosition() const { return m_tTransPos.Position; }
+	void SetPosition(float _fx, float _fy) { m_tTransPos.Position.fX = _fx; m_tTransPos.Position.fY = _fy; }
 
-
-	void SetAngle(float _Angle)
-	{
-		m_fAngle = _Angle;
-	}
-
-	void SetPosition(float _fx, float _fy)
-	{
-		m_tTransPos.Position.fX = _fx;
-		m_tTransPos.Position.fY = _fy;
-	}
-
-	void SetScale(float _fx, float _fy)
-	{
-		m_tTransPos.Scale.fX = _fx;
-		m_tTransPos.Scale.fY = _fy;
-	}
+	Vector3 GetScale() const { return m_tTransPos.Scale; }
+	void SetScale(float _fx, float _fy) { m_tTransPos.Scale.fX = _fx; m_tTransPos.Scale.fY = _fy; }
 
 public:
 	Object();

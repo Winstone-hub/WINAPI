@@ -58,9 +58,9 @@ void Stage::Render(HDC _hdc)
 
 	//** 최종 이미지를 HDC에 출력함.
 	BitBlt(_hdc,	//** 그림을 그려 넣을곳
-		(WINSIZEX / 2) - (1280 / 2),	//** 이미지가 출력될 시작점 X
-		(WINSIZEY / 2) - (720 / 2),	//** 이미지가 출력될 시작점 Y
-		1280, 720,				//** 복사할 이미지의 크기만큼 복사
+		0,	//** 이미지가 출력될 시작점 X
+		0,	//** 이미지가 출력될 시작점 Y
+		WINSIZEX, WINSIZEY,				//** 복사할 이미지의 크기만큼 복사
 		(*pBitmapList)["BackBuffer"]->GetMemDC(),	//** 복사할 이미지
 		0, 0,	// 출력 시작점 좌표
 		SRCCOPY);	// 고속 복사

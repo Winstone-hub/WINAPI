@@ -1,7 +1,7 @@
 #pragma once
 
-#define WINSIZEX  1280
-#define WINSIZEY  720
+#define WINSIZEX  720
+#define WINSIZEY  1280
 
 
 #define PI 3.141592f

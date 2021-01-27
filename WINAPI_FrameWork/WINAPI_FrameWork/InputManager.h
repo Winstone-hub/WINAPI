@@ -16,6 +16,14 @@ private:
 	DWORD m_dwKey;
 public:
 	DWORD GetKey() const { return m_dwKey; }
+	POINT GetMousePoint(void)
+	{
+		POINT	pt;
+		GetCursorPos(&pt);
+		ScreenToClient(g_hWnd, &pt);
+		return pt;
+	}
+
 
 	void UpdateKey();
 

@@ -25,24 +25,24 @@ void Logo::Initialize(void)
 	m_pImageList = BitmapManager::GetInstance()->GetImageList();
 
 
-
-
 	/*********************************
 	   **  Menu image is insert. **
 	**********************************/
 
 	//** Menu 백그라운드 이미지 삽입
 	m_pImageList->insert(
-		make_pair("MenuBack", (new Bitmap)->LoadBmp(L"../Resource/Image/Menu/MenuBack.bmp")));
+		make_pair("MenuBack", (new Bitmap)->LoadBmp(L"../Resource/Image/Menu/BackGround.bmp")));
 
 
 	//** Menu Button 이미지 삽입
 	m_pImageList->insert(
-		make_pair("PlayButton", (new Bitmap)->LoadBmp(L"../Resource/Image/Menu/PlayButton.bmp")));
+		make_pair("LogoButton", (new Bitmap)->LoadBmp(L"../Resource/Image/Menu/logo.bmp")));
 
 
+	//** 버퍼 이미지 삽입. (이미지를 한번에 출력하기 위한 그림판 용도)
 	m_pImageList->insert(
 		make_pair("BackBuffer", (new Bitmap)->LoadBmp(L"../Resource/Image/Backbuffer.bmp")));
+
 
 
 	/*********************************

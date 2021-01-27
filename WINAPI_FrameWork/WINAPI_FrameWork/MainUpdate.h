@@ -19,10 +19,11 @@ public:
 
 /***********************************************************
 *		** Schedule board **
-* 1. Stage 문제 해결
-* 2. Alpha Image  .
+* 2. Alpha Image.
 * 3. 영상처리.
 * 4. 폭발 애니메이션 제작 예정.
 ************************************************************/
 
 
+//** 리소스 이미지
+// https://drive.google.com/drive/folders/16mKYX4u7d3C1gaU8s3E84D_cYPxTclGw?usp=sharing

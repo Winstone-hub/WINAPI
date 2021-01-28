@@ -47,6 +47,10 @@ void InputManager::UpdateKey()
 	{
 		m_dwKey |= KEY_LBUTTON;
 	}
+	if (GetAsyncKeyState(VK_ESCAPE))
+	{
+		m_dwKey |= KEY_ESCAPE;
+	}
 }
 
 

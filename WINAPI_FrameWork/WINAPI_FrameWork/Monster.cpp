@@ -7,7 +7,7 @@ Monster::Monster()
 
 Monster::~Monster()
 {
-
+	
 }
 
 

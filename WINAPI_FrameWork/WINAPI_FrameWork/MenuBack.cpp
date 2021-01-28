@@ -18,7 +18,9 @@ void MenuBack::Initialize(void)
 
 	m_fAngle = 0.f;
 	m_fSpeed = 5.f;
-	m_strKey = "MenuBack";
+	m_strKey = "BackGround_";
+
+	m_strKey.push_back(48+(rand() % 4 + 1));
 }
 
 int MenuBack::Progress(void)

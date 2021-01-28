@@ -16,12 +16,10 @@ public:
 
 private:
 	map<string, Bitmap*> m_mapImageList;
-
+	map<string, vector<Bitmap*>*> m_BackGroundList;
 public:
-	map<string, Bitmap*>* GetImageList()
-	{
-		return &m_mapImageList;
-	}
+	map<string, Bitmap*>* GetImageList() { return &m_mapImageList; }
+	map<string, vector<Bitmap*>*>* GetBackGroundList() { return &m_BackGroundList; }
 private:
 	BitmapManager();
 public:

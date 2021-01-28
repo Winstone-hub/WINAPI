@@ -17,10 +17,7 @@ Menu::~Menu()
 
 void Menu::Initialize(void)
 {
-	Object* pMenuback = ObjectFactroy<MenuBack>::CreateObject();
-	ObjectManager::GetInstance()->AddObject(pMenuback->GetKey(), pMenuback);
 
-	m_pButtonList.push_back(ObjectFactroy<Button>::CreateObject("LogoButton", WINSIZEX/2, (WINSIZEY/2)- 300));
 	//m_pButtonList.push_back(ObjectFactroy<Button>::CreateObject("Option", 200, (WINSIZEY/2 - 500)));
 	//m_pButtonList.push_back(ObjectFactroy<Button>::CreateObject("Exit", 200, (WINSIZEY/2 - 700)));
 }

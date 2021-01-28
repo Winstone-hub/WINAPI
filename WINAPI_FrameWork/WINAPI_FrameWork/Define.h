@@ -22,6 +22,7 @@ const DWORD KEY_MENU		= 0x00040;			// 01000000
 
 const DWORD KEY_RBUTTON = 0x00080;			// 마우스 우클릭
 const DWORD KEY_LBUTTON = 0x00100;			// 마우스 좌클릭
+const DWORD KEY_ESCAPE = 0x00200;			// 마우스 좌클릭
 
 
 

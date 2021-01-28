@@ -16,10 +16,7 @@ public:
 private:
 	map<string, list<Object*>> m_mapObjectList;
 public:
-	map<string, list<Object*>>* GetObjectList()
-	{
-		return &m_mapObjectList;
-	}
+	map<string, list<Object*>>* GetObjectList() { return &m_mapObjectList; }
 public:
 	void AddObject(string _strKey, Object* _Object);
 	void Progress(void);

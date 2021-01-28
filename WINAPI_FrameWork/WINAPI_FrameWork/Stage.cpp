@@ -20,6 +20,20 @@ Stage::~Stage()
 
 void Stage::Initialize(void)
 {
+	/*********************************
+	   **  Stage image is insert. **
+	**********************************/
+
+	//** 스테이지 배경 이미지 삽입.
+	(*m_pImageList)["BackGround"] = (new Bitmap)->LoadBmp(L"../Resource/Image/BackGround.bmp");
+
+	//** 플레이어 이미지 삽입
+	(*m_pImageList)["Player"] = (new Bitmap)->LoadBmp(L"../Resource/Image/Player.bmp");
+
+	//** 몬스터 이미지 삽입
+	m_pImageList->insert(make_pair("Monster", (new Bitmap)->LoadBmp(L"../Resource/Image/Rect.bmp")));
+
+
 	//** 플레이어 생성 후 오브젝트 매니저에 추가
 	Object* pPlayer = ObjectFactroy<Player>::CreateObject(WINSIZEX / 2, WINSIZEY / 2);
 	ObjectManager::GetInstance()->AddObject(pPlayer->GetKey(), pPlayer);
@@ -39,6 +53,7 @@ void Stage::Initialize(void)
 		ObjectManager::GetInstance()->AddObject(pMonster->GetKey() , pMonster);
 	}
 	*/
+	Object::SetImageList(m_pImageList);
 }
 
 int Stage::Progress(void)

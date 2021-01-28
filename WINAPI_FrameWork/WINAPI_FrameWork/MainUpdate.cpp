@@ -31,7 +31,7 @@ void MainUpdate::Initialize(void)
 	//** 씬 매니저 초기화. 최초 로고로 진입하게 셋팅.
 	SceneManager::GetInstance()->SetScene(SCENEID_LOGO);
 
-
+	/*
 	//** 사운드 디바이스 생성 및 초기화.
 	SoundManager::GetInstance()->Initialize();
 
@@ -41,6 +41,7 @@ void MainUpdate::Initialize(void)
 
 	//** 사운드 재생 및 채널 설정.
 	SoundManager::GetInstance()->OnPlaySound("horror", SOUND_CHANNEL_ID_BACKGROUND);
+	*/
 }
 
 void MainUpdate::Progress(void)
@@ -49,7 +50,7 @@ void MainUpdate::Progress(void)
 	InputManager::GetInstance()->UpdateKey();
 
 	//** 재생중인 사운드가 종료되기 전인지 확인하기 위함.
-	SoundManager::GetInstance()->StreamingUpdate();
+	//SoundManager::GetInstance()->StreamingUpdate();
 
 	SceneManager::GetInstance()->Progress();
 }

@@ -23,13 +23,11 @@ void Button::Initialize(void)
 	m_iScene = 0;
 	m_fAngle = 0.f;
 	m_fSpeed = 5.f;
-	//m_strKey = "PlayButton";
 }
 
 int Button::Progress(void)
 {
 	POINT ptMouse = InputManager::GetInstance()->GetMousePoint();
-
 
 	if (InputManager::GetInstance()->GetKey() & KEY_LBUTTON)
 	{
@@ -42,7 +40,6 @@ int Button::Progress(void)
 		else if (m_strKey == "Exit")
 			return 3;
 	}
-
 	return 0;
 }
 
@@ -55,8 +52,8 @@ void Button::Render(HDC _hdc)
 		(int)m_tTransPos.Scale.fX,	// 복사할 영역 끝부분 X
 		(int)m_tTransPos.Scale.fY, 	// 복사할 영역 끝부분 Y
 		(*m_ImageList)[m_strKey]->GetMemDC(),	// 복사할 이미지 (복사대상)
-		0,	// 복사할 시작점 X
-		0,										// 복사할 시작점 Y
+		0,		// 복사할 시작점 X
+		0,		// 복사할 시작점 Y
 		int(m_tTransPos.Scale.fX), 		// 출력할 이미지의 크기 만큼 X
 		int(m_tTransPos.Scale.fY),		// 출력할 이미지의 크기 만큼 Y
 		RGB(255, 255, 255));		// 해당 색상을 제외

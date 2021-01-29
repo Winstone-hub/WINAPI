@@ -2,9 +2,11 @@
 #include "Scene.h"
 
 class Object;
+class Bitmap;
 class Logo : public Scene
 {
 private:
+	Bitmap* m_pBackBuffer;
 	vector<Object*> m_pButtonList;
 public:
 	virtual void Initialize(void)override;

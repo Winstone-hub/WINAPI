@@ -171,9 +171,9 @@
     <ClInclude Include="Include.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Logo.h" />
+    <ClInclude Include="LogoObject.h" />
     <ClInclude Include="MainUpdate.h" />
     <ClInclude Include="Menu.h" />
-    <ClInclude Include="MenuBack.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="NormalBullet.h" />
     <ClInclude Include="Object.h" />
@@ -200,9 +200,9 @@
     <ClCompile Include="Explosion.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Logo.cpp" />
+    <ClCompile Include="LogoObject.cpp" />
     <ClCompile Include="MainUpdate.cpp" />
     <ClCompile Include="Menu.cpp" />
-    <ClCompile Include="MenuBack.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="NormalBullet.cpp" />
     <ClCompile Include="Object.cpp" />

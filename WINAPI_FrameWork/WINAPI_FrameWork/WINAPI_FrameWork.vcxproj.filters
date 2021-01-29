@@ -88,17 +88,20 @@
     <Filter Include="소스 파일\01. Object\Stage\Monster">
       <UniqueIdentifier>{aaaf49eb-9854-4c22-8ddb-80c83a974488}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\01. Object\Stage\BackGround">
-      <UniqueIdentifier>{63cbf6ec-b3b1-4b39-8a14-9fd4a83de020}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\01. Object\Menu">
       <UniqueIdentifier>{ca5902a5-f076-405b-a7bb-93e98dbcaf8e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\01. Object\Menu\MenuBack">
-      <UniqueIdentifier>{443b6462-e1ec-45db-977a-eaa9ea9993a1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\01. Object\Menu\Button">
       <UniqueIdentifier>{bc87a424-ca80-47ab-ae09-980d24f23fca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01. Object\Object_Common">
+      <UniqueIdentifier>{360f0b7f-2145-4313-b9c7-38ebbb3a54cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01. Object\Object_Common\BackGround">
+      <UniqueIdentifier>{63cbf6ec-b3b1-4b39-8a14-9fd4a83de020}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01. Object\LogoObject">
+      <UniqueIdentifier>{1a856d25-b4b9-46e2-b894-9900eb6377b5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -190,16 +193,16 @@
       <Filter>소스 파일\01. Object\Stage\ParticleBridge</Filter>
     </ClInclude>
     <ClInclude Include="BackGround.h">
-      <Filter>소스 파일\01. Object\Stage\BackGround</Filter>
+      <Filter>소스 파일\01. Object\Object_Common\BackGround</Filter>
     </ClInclude>
     <ClInclude Include="SoundManager.h">
       <Filter>소스 파일\99. Manager\SoundManager</Filter>
     </ClInclude>
-    <ClInclude Include="MenuBack.h">
-      <Filter>소스 파일\01. Object\Menu\MenuBack</Filter>
-    </ClInclude>
     <ClInclude Include="Button.h">
       <Filter>소스 파일\01. Object\Menu\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="LogoObject.h">
+      <Filter>소스 파일\01. Object\LogoObject</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -258,16 +261,16 @@
       <Filter>소스 파일\01. Object\Stage\ParticleBridge\Explosion</Filter>
     </ClCompile>
     <ClCompile Include="BackGround.cpp">
-      <Filter>소스 파일\01. Object\Stage\BackGround</Filter>
+      <Filter>소스 파일\01. Object\Object_Common\BackGround</Filter>
     </ClCompile>
     <ClCompile Include="SoundManager.cpp">
       <Filter>소스 파일\99. Manager\SoundManager</Filter>
     </ClCompile>
-    <ClCompile Include="MenuBack.cpp">
-      <Filter>소스 파일\01. Object\Menu\MenuBack</Filter>
-    </ClCompile>
     <ClCompile Include="Button.cpp">
       <Filter>소스 파일\01. Object\Menu\Button</Filter>
+    </ClCompile>
+    <ClCompile Include="LogoObject.cpp">
+      <Filter>소스 파일\01. Object\LogoObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

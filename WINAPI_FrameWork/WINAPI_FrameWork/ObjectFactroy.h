@@ -24,7 +24,7 @@ public:
 		return pObj;
 	}
 
-	static Object* CreateObject(string _str, float _fx, float _fy)
+	static Object* CreateObject(float _fx, float _fy, string _str)
 	{
 		Object* pObj = new T;
 		pObj->Initialize();

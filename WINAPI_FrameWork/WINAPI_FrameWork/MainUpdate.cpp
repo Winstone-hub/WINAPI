@@ -22,6 +22,27 @@ void MainUpdate::Initialize(void)
 	//** 그림을 그릴 DC를 window에서 받아옴.
 	m_hdc = GetDC(g_hWnd);
 
+
+
+
+	/***************************
+	*	  사운드 디바이스
+	****************************/
+
+	//** 사운드 디바이스 생성 및 초기화.
+	SoundManager::GetInstance()->Initialize();
+
+	//** 사운드 추가
+	SoundManager::GetInstance()->AddSound("../Resource/Sound/dragon_flight.mp3", "BackGround");
+	SoundManager::GetInstance()->AddSound("../Resource/Sound/dragon_flight2.mp3", "Logo");
+
+
+
+
+
+
+
+
 	//** 마우스 포인터 안보이게 설정. (true/false)
 	//ShowCursor(false);
 
@@ -30,18 +51,6 @@ void MainUpdate::Initialize(void)
 
 	//** 씬 매니저 초기화. 최초 로고로 진입하게 셋팅.
 	SceneManager::GetInstance()->SetScene(SCENEID_LOGO);
-
-	/*
-	//** 사운드 디바이스 생성 및 초기화.
-	SoundManager::GetInstance()->Initialize();
-
-	//** 사운드 추가
-	SoundManager::GetInstance()->AddSound("../Resource/Sound/bleeps.wav", "bleeps");
-	SoundManager::GetInstance()->AddSound("../Resource/Sound/horror.wav", "horror");
-
-	//** 사운드 재생 및 채널 설정.
-	SoundManager::GetInstance()->OnPlaySound("horror", SOUND_CHANNEL_ID_BACKGROUND);
-	*/
 }
 
 void MainUpdate::Progress(void)

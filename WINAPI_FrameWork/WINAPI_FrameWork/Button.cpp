@@ -18,7 +18,7 @@ void Button::Initialize(void)
 {
 	m_tTransPos.Position = Vector3(WINSIZEX / 2, WINSIZEY / 2);
 	m_tTransPos.Rotation = Vector3(0.f, 0.f, 0.f);
-	m_tTransPos.Scale = Vector3(483, 289);
+	m_tTransPos.Scale = Vector3(174, 87);
 
 	m_iScene = 0;
 	m_fAngle = 0.f;
@@ -56,7 +56,7 @@ void Button::Render(HDC _hdc)
 		0,		// 복사할 시작점 Y
 		int(m_tTransPos.Scale.fX), 		// 출력할 이미지의 크기 만큼 X
 		int(m_tTransPos.Scale.fY),		// 출력할 이미지의 크기 만큼 Y
-		RGB(255, 255, 255));		// 해당 색상을 제외
+		RGB(255, 0, 255));		// 해당 색상을 제외
 }
 
 void Button::Release(void)

@@ -1,5 +1,4 @@
 #include "Menu.h"
-#include "MenuBack.h"
 #include "Button.h"
 #include "Bitmap.h"
 #include "ObjectFactroy.h"
@@ -17,9 +16,9 @@ Menu::~Menu()
 
 void Menu::Initialize(void)
 {
-
-	//m_pButtonList.push_back(ObjectFactroy<Button>::CreateObject("Option", 200, (WINSIZEY/2 - 500)));
-	//m_pButtonList.push_back(ObjectFactroy<Button>::CreateObject("Exit", 200, (WINSIZEY/2 - 700)));
+	m_pButtonList.push_back(ObjectFactroy<Button>::CreateObject(200, (WINSIZEY/2 - 500), "StartButton"));
+	//m_pButtonList.push_back(ObjectFactroy<Button>::CreateObject(200, (WINSIZEY/2 - 500), "Option"));
+	//m_pButtonList.push_back(ObjectFactroy<Button>::CreateObject(200, (WINSIZEY/2 - 700), "Exit"));
 }
 
 int Menu::Progress(void)
@@ -55,6 +54,8 @@ void Menu::Render(HDC _hdc)
 
 	ObjectManager::GetInstance()->Render((*pBitmapList)["BackBuffer"]->GetMemDC());
 
+	/*
+	*/
 	for (int i = 0; i < m_pButtonList.size() ; i++)
 	{
 		m_pButtonList[i]->Render((*pBitmapList)["BackBuffer"]->GetMemDC());

@@ -272,6 +272,9 @@
     <ClCompile Include="LogoObject.cpp">
       <Filter>소스 파일\01. Object\LogoObject</Filter>
     </ClCompile>
+    <ClCompile Include="Particle_Bridge.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WINAPI_FrameWork.rc">

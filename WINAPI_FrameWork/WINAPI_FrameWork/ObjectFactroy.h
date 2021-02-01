@@ -14,6 +14,15 @@ public:
 		return pObj;
 	}
 
+	static Object* CreateObject(string _strKey)
+	{
+		Object* pObj = new T;
+		pObj->Initialize();
+		pObj->SetKey(_strKey);
+		
+		return pObj;
+	}
+
 	static Object* CreateObject(float _fx, float _fy)
 	{
 		Object* pObj = new T;

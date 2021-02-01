@@ -9,13 +9,11 @@ int main(void)
 {
 	ULONGLONG Time = GetTickCount64();
 
-
 	int Count = 0;
-
 
 	while (true)
 	{
-		if (Time + 150 < GetTickCount64())
+		if (Time + 1000 < GetTickCount64())
 		{
 			Time = GetTickCount64();
 
@@ -24,9 +22,5 @@ int main(void)
 			cout << Count++ << endl;
 		}
 	}
-
-
-
-
 	return 0;
 }

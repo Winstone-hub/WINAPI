@@ -19,6 +19,7 @@ void Explosion::Initialize(void)
 
 int Explosion::Progress(void)
 {
+
 	return 0;
 }
 

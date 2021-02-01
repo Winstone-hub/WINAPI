@@ -94,7 +94,6 @@ int Player::Progress(void)
 	{
 		m_dwFrameTime = GetTickCount64();
 
-
 		//** 현재 프레임 카운트가 마지막 이미지 프레임보다 큰지 확인한다.
 		if (m_tFrame.Count > m_tFrame.LastFrame)
 		{

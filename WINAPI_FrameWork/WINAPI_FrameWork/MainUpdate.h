@@ -19,7 +19,6 @@ public:
 
 /***********************************************************
 *		** Schedule board **
-* 2. Alpha Image.
 * 3. 영상처리.
 * 4. 폭발 애니메이션 제작 예정.
 ************************************************************/
@@ -27,3 +26,5 @@ public:
 
 //** 리소스 이미지
 // https://drive.google.com/drive/folders/16mKYX4u7d3C1gaU8s3E84D_cYPxTclGw?usp=sharing
+
+

@@ -6,7 +6,7 @@ class Bitmap;
 class Scene
 {
 protected:
-	map<string, Bitmap*>* m_pImageList;
+	map<string, Bitmap*>	m_ImageList;
 public:
 	virtual void Initialize()PURE;
 	virtual int Progress()PURE;

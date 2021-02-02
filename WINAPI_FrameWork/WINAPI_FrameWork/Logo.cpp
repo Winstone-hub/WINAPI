@@ -53,11 +53,6 @@ void Logo::Initialize(void)
 	   **  Logo image is insert. **
 	**********************************/
 
-	
-	//** 이미지 리스트 받아옴
-	m_pImageList = BitmapManager::GetInstance()->GetImageList();
-
-
 	//** Background 백그라운드 이미지 삽입
 	for (int i = 1 ; i < 5 ; i++ )
 	{
@@ -70,38 +65,23 @@ void Logo::Initialize(void)
 		string str = "BackGround_";
 		str.push_back(48 + i);
 
-		m_pImageList->insert(make_pair(str, (new Bitmap)->LoadBmp(pBuffer)));
+		m_ImageList[str] = (new Bitmap)->LoadBmp(pBuffer);
 	}
 
 
 	//** Logo 이미지 삽입
-	m_pImageList->insert(
-		make_pair("Logo", (new Bitmap)->LoadBmp(L"../Resource/Image/Logo/logo.bmp")));
+	m_ImageList["Logo"] = (new Bitmap)->LoadBmp(L"../Resource/Image/Logo/logo.bmp");
 
 
 	//** 버퍼 이미지 삽입. (이미지를 한번에 출력하기 위한 그림판 용도)
-	m_pImageList->insert(
-		make_pair("Backbuffer", (new Bitmap)->LoadBmp(L"../Resource/Image/Common/Backbuffer.bmp")));
+	m_ImageList["Backbuffer"] = (new Bitmap)->LoadBmp(L"../Resource/Image/Common/Backbuffer.bmp");
 
 
-
-
-	/*********************************
-	   **  Menu image is insert. **
-	**********************************/
-
-	//** 버퍼 이미지 삽입. (이미지를 한번에 출력하기 위한 그림판 용도)
-	m_pImageList->insert(
-		make_pair("StartButton", (new Bitmap)->LoadBmp(L"../Resource/Image/Menu/btn_purchase_n-horz.bmp")));
 
 
 
 	//** 리스트에 넣어둔 이미지들을 오브젝트 클레스에 보관.
-	Object::SetImageList(m_pImageList);
-
-
-
-
+	Object::SetImageList(&m_ImageList);
 
 
 
@@ -126,16 +106,16 @@ int Logo::Progress(void)
 void Logo::Render(HDC _hdc)
 {
 	for (int i = 0; i < 2; i++)
-		m_pBackGround[i]->Render((*m_pImageList)["Backbuffer"]->GetMemDC());
+		m_pBackGround[i]->Render(m_ImageList["Backbuffer"]->GetMemDC());
 
-	m_pLogoObject->Render((*m_pImageList)["Backbuffer"]->GetMemDC());
+	m_pLogoObject->Render(m_ImageList["Backbuffer"]->GetMemDC());
 
 
 	BitBlt(_hdc,	//** 그림을 그려 넣을곳
 		0,	//** 이미지가 출력될 시작점 X
 		0,	//** 이미지가 출력될 시작점 Y
 		WINSIZEX, WINSIZEY,				//** 복사할 이미지의 크기만큼 복사
-		(*m_pImageList)["Backbuffer"]->GetMemDC(),	//** 복사할 이미지
+		m_ImageList["Backbuffer"]->GetMemDC(),	//** 복사할 이미지
 		0, 0,	// 출력 시작점 좌표
 		SRCCOPY);	// 고속 복사
 }

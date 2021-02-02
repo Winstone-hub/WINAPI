@@ -41,6 +41,7 @@ void ObjectManager::Progress(void)
 		}
 	}
 
+
 	/*
 	map<string, list<Object*>>::iterator iterPlayer = m_mapObjectList.find("Player");
 	map<string, list<Object*>>::iterator iterMonster = m_mapObjectList.find("Monster");

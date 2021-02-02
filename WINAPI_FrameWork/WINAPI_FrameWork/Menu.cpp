@@ -40,14 +40,6 @@ void Menu::Initialize(void)
 	m_ImageList["Backbuffer"] = (new Bitmap)->LoadBmp(L"../Resource/Image/Common/Backbuffer.bmp");
 
 
-
-
-
-
-	/*********************************
-	   **  Menu image is insert. **
-	**********************************/
-
 	//** 버퍼 이미지 삽입. (이미지를 한번에 출력하기 위한 그림판 용도)
 	m_ImageList["StartButton"] = (new Bitmap)->LoadBmp(L"../Resource/Image/Menu/btn_purchase_n-horz.bmp");
 

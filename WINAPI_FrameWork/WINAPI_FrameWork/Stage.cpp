@@ -31,8 +31,6 @@ void Stage::Initialize(void)
 
 		wsprintf(pBuffer, TEXT("../Resource/Image/Common/Background/%02d.bmp"), i);
 
-		//MessageBox(g_hWnd, pBuffer, L"", NULL);
-
 		string str = "BackGround_";
 		str.push_back(48 + i);
 
@@ -49,6 +47,8 @@ void Stage::Initialize(void)
 	m_ImageList["Monster"] = (new Bitmap)->LoadBmp(L"../Resource/Image/Stage/Rect.bmp");
 
 
+
+
 	//** 플레이어 생성 후 오브젝트 매니저에 추가
 	Object* pPlayer = ObjectFactroy<Player>::CreateObject(WINSIZEX / 2, WINSIZEY / 2);
 	ObjectManager::GetInstance()->AddObject(pPlayer->GetKey(), pPlayer);
@@ -57,7 +57,6 @@ void Stage::Initialize(void)
 	//Object* pBackGround = ObjectFactroy<BackGround>::CreateObject();
 	//ObjectManager::GetInstance()->AddObject(pBackGround->GetKey(), pBackGround);
 	
-
 	
 	for (int i = 0; i < 8; i++)
 	{

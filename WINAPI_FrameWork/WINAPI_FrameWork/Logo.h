@@ -5,7 +5,9 @@ class Object;
 class Logo : public Scene
 {
 private:
+	//HWND		m_hVideo;
 	Object* m_pBackGround[2];
+	Object* m_pLogoObject;
 	vector<Object*> m_pButtonList;
 public:
 	virtual void Initialize(void)override;

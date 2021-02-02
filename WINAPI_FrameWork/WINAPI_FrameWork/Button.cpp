@@ -31,7 +31,7 @@ int Button::Progress(void)
 
 	if (InputManager::GetInstance()->GetKey() & KEY_LBUTTON)
 	{
-		if (m_strKey == "Start")
+		if (m_strKey == "StartButton")
 			return 1;
 
 		else if (m_strKey == "Option")

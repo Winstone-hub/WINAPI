@@ -11,6 +11,9 @@
 #include "BitmapManager.h"
 #include "SoundManager.h"
 
+#include <vfw.h>
+#pragma comment (lib, "vfw32.lib")
+
 
 Logo::Logo()
 {
@@ -25,15 +28,23 @@ Logo::~Logo()
 
 void Logo::Initialize(void)
 {
+	/*
+	m_hVideo = MCIWndCreate(g_hWnd, NULL, MCIWNDF_NOPLAYBAR | WS_VISIBLE | WS_CHILD,
+		L"../Resource/Video/Logo.wmv");
+
+	MoveWindow(m_hVideo, 0, 0, WINSIZEX, WINSIZEY, NULL);
+	MCIWndPlay(m_hVideo);
+	*/
+
+
 	string strKey = "BackGround_";
 	strKey.push_back(48 + (rand() % 4 + 1));
 
 	m_pBackGround[0] = ObjectFactroy<BackGround>::CreateObject(0, 0, strKey);
 	m_pBackGround[1] = ObjectFactroy<BackGround>::CreateObject(0, (-WINSIZEY), strKey);
 
-	Object* pLogoObject = ObjectFactroy<LogoObject>::CreateObject(WINSIZEX / 2, 300, "Logo");
-	ObjectManager::GetInstance()->AddObject(pLogoObject->GetKey(), pLogoObject);
-
+	m_pLogoObject = ObjectFactroy<LogoObject>::CreateObject(WINSIZEX / 2, 300, "Logo");
+	
 
 
 
@@ -42,6 +53,7 @@ void Logo::Initialize(void)
 	   **  Logo image is insert. **
 	**********************************/
 
+	
 	//** 이미지 리스트 받아옴
 	m_pImageList = BitmapManager::GetInstance()->GetImageList();
 
@@ -69,8 +81,7 @@ void Logo::Initialize(void)
 
 	//** 버퍼 이미지 삽입. (이미지를 한번에 출력하기 위한 그림판 용도)
 	m_pImageList->insert(
-		make_pair("Backbuffer", (new Bitmap)->LoadBmp(L"../Resource/Image/Backbuffer.bmp")));
-
+		make_pair("Backbuffer", (new Bitmap)->LoadBmp(L"../Resource/Image/Common/Backbuffer.bmp")));
 
 
 
@@ -103,12 +114,12 @@ int Logo::Progress(void)
 	for(int i =  0 ; i < 2 ; i++)
 		m_pBackGround[i]->Progress();
 	
-	ObjectManager::GetInstance()->Progress();
+	m_pLogoObject->Progress();
 
 	DWORD dwKey = InputManager::GetInstance()->GetKey();
 	if (dwKey & KEY_RETURN || dwKey & KEY_ESCAPE)
 		SceneManager::GetInstance()->SetScene(SCENEID_MENU);
-	
+
 	return 0;
 }
 
@@ -117,7 +128,7 @@ void Logo::Render(HDC _hdc)
 	for (int i = 0; i < 2; i++)
 		m_pBackGround[i]->Render((*m_pImageList)["Backbuffer"]->GetMemDC());
 
-	ObjectManager::GetInstance()->Render((*m_pImageList)["Backbuffer"]->GetMemDC());
+	m_pLogoObject->Render((*m_pImageList)["Backbuffer"]->GetMemDC());
 
 
 	BitBlt(_hdc,	//** 그림을 그려 넣을곳

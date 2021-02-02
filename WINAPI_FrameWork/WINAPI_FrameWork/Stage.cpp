@@ -20,18 +20,20 @@ Stage::~Stage()
 
 void Stage::Initialize(void)
 {
+	//** 이미지 리스트 받아옴
+	m_pImageList = BitmapManager::GetInstance()->GetImageList();
+
+
+
 	/*********************************
 	   **  Stage image is insert. **
 	**********************************/
 
-	//** 스테이지 배경 이미지 삽입.
-	(*m_pImageList)["BackGround"] = (new Bitmap)->LoadBmp(L"../Resource/Image/BackGround.bmp");
-
 	//** 플레이어 이미지 삽입
-	(*m_pImageList)["Player"] = (new Bitmap)->LoadBmp(L"../Resource/Image/Player.bmp");
+	(*m_pImageList)["Player"] = (new Bitmap)->LoadBmp(L"../Resource/Image/Stage/Player.bmp");
 
 	//** 몬스터 이미지 삽입
-	m_pImageList->insert(make_pair("Monster", (new Bitmap)->LoadBmp(L"../Resource/Image/Rect.bmp")));
+	m_pImageList->insert(make_pair("Monster", (new Bitmap)->LoadBmp(L"../Resource/Image/Stage/Rect.bmp")));
 
 
 	//** 플레이어 생성 후 오브젝트 매니저에 추가
@@ -39,11 +41,11 @@ void Stage::Initialize(void)
 	ObjectManager::GetInstance()->AddObject(pPlayer->GetKey(), pPlayer);
 
 	//** 백그라운드 생성 후 오브젝트 매니저에 추가
-	Object* pBackGround = ObjectFactroy<BackGround>::CreateObject();
-	ObjectManager::GetInstance()->AddObject(pBackGround->GetKey(), pBackGround);
+	//Object* pBackGround = ObjectFactroy<BackGround>::CreateObject();
+	//ObjectManager::GetInstance()->AddObject(pBackGround->GetKey(), pBackGround);
 	
 
-	/*
+	
 	for (int i = 0; i < 8; i++)
 	{
 		Object* pMonster = ObjectFactroy<Monster>::CreateObject(
@@ -52,7 +54,7 @@ void Stage::Initialize(void)
 
 		ObjectManager::GetInstance()->AddObject(pMonster->GetKey() , pMonster);
 	}
-	*/
+	
 	Object::SetImageList(m_pImageList);
 }
 
@@ -69,7 +71,7 @@ void Stage::Render(HDC _hdc)
 	map<string, Bitmap*>* pBitmapList = BitmapManager::GetInstance()->GetImageList();
 
 	//** 스테이지 이미지가 출력된 버퍼 위에 오브텍드 이미지를 출력함.
-	ObjectManager::GetInstance()->Render((*pBitmapList)["BackBuffer"]->GetMemDC());
+	ObjectManager::GetInstance()->Render( (*pBitmapList)["BackBuffer"]->GetMemDC() );
 
 	//** 최종 이미지를 HDC에 출력함.
 	BitBlt(_hdc,	//** 그림을 그려 넣을곳

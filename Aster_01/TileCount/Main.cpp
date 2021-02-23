@@ -13,7 +13,8 @@ const int TILE_COUNT_Y = 30 / 3;
 
 int main(void)
 {
-	DoubleBuffer::GetInstance()->CreateBuffer(121, 31);
+	system("mode con cols=120 lines=31 | title Aster");
+	DoubleBuffer::GetInstance()->CreateBuffer(121, 32);
 
 	ULONGLONG Time = GetTickCount64();
 

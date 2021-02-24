@@ -15,6 +15,9 @@ int main(void)
 	DoubleBuffer::GetInstance()->CreateBuffer(121, 32);
 
 	ULONGLONG Time = GetTickCount64();
+	vector<TILE*> TileList;
+
+
 
 	TILE Player;
 	{
@@ -26,6 +29,55 @@ int main(void)
 		Player.strTile[2] = (char*)"";
 	}
 
+
+
+
+	for (int i = 0; i < TILE_COUNT_Y; ++i)
+		for (int j = 0; j < TILE_COUNT_X; ++j)
+		{
+			TILE* Tile = new TILE;
+
+			Tile->Scale.x = TILE_SIZE_X;
+			Tile->Scale.y = TILE_SIZE_Y;
+
+			Tile->strTile[0] = (char*)"忙式式忖";
+			Tile->strTile[1] = (char*)"弛﹛﹛弛";
+			Tile->strTile[2] = (char*)"戌式式戎";
+
+			Tile->Position.x = j * Tile->Scale.x;
+			Tile->Position.y = (i * Tile->Scale.y) + (Tile->Scale.y / 2);
+
+			Tile->Index = i * TILE_COUNT_X + j;
+
+			TileList.push_back(Tile);
+
+			Tile->Option = 0;
+		}
+
+	int n = 0;
+
+	srand((DWORD)GetTickCount64());
+
+	while (true)
+	{
+		int iIndex = rand() % (TILE_COUNT_X * TILE_COUNT_Y);
+
+		if (iIndex < 0 || iIndex >(TILE_COUNT_X * TILE_COUNT_Y))
+			continue;
+
+
+		if (TileList[iIndex]->Option != 1)
+		{
+			TileList[iIndex]->Option = 1;
+			++n;
+		}
+		else
+			continue;
+
+		if (n == 5)
+			break;
+	}
+
 	while (true)
 	{
 		if (Time < GetTickCount64())
@@ -35,27 +87,7 @@ int main(void)
 			DoubleBuffer::GetInstance()->FlippingBuffer();
 			DoubleBuffer::GetInstance()->ClearBuffer();
 
-			vector<TILE*> TileList;
 
-			for (int i = 0; i < TILE_COUNT_Y; ++i)
-				for (int j = 0; j < TILE_COUNT_X; ++j)
-				{
-					TILE* Tile = new TILE;
-
-					Tile->Scale.x = TILE_SIZE_X;
-					Tile->Scale.y = TILE_SIZE_Y;
-
-					Tile->strTile[0] = (char*)"忙式式忖";
-					Tile->strTile[1] = (char*)"弛﹛﹛弛";
-					Tile->strTile[2] = (char*)"戌式式戎";
-
-					Tile->Position.x = j * Tile->Scale.x;
-					Tile->Position.y = (i * Tile->Scale.y) + (Tile->Scale.y / 2);
-
-					Tile->Index = i * TILE_COUNT_X + j;
-
-					TileList.push_back(Tile);
-				}
 
 			if (GetAsyncKeyState(VK_UP))
 			{
@@ -91,20 +123,12 @@ int main(void)
 					DoubleBuffer::GetInstance()->WriteBuffer(TileList[i]->Position.x, TileList[i]->Position.y - 1, TileList[i]->strTile[0], 12);
 					DoubleBuffer::GetInstance()->WriteBuffer(TileList[i]->Position.x, TileList[i]->Position.y, TileList[i]->strTile[1], 12);
 					DoubleBuffer::GetInstance()->WriteBuffer(TileList[i]->Position.x, TileList[i]->Position.y + 1, TileList[i]->strTile[2], 12);
-
-					DoubleBuffer::GetInstance()->WriteBuffer(TileList[Player.Index - 1]->Position.x, TileList[Player.Index - 1]->Position.y - 1, TileList[Player.Index - 1]->strTile[0], 10);
-					DoubleBuffer::GetInstance()->WriteBuffer(TileList[Player.Index - 1]->Position.x, TileList[Player.Index - 1]->Position.y, TileList[Player.Index - 1]->strTile[1], 10);
-					DoubleBuffer::GetInstance()->WriteBuffer(TileList[Player.Index - 1]->Position.x, TileList[Player.Index - 1]->Position.y + 1, TileList[Player.Index - 1]->strTile[2], 10);
-
-
-
-
-
-
-
-
-
-					DoubleBuffer::GetInstance()->WriteBuffer(Player.Position.x, Player.Position.y, (char*)"褡", 12);
+				}
+				else if (TileList[i]->Option != 0)
+				{
+					DoubleBuffer::GetInstance()->WriteBuffer(TileList[i]->Position.x, TileList[i]->Position.y - 1, TileList[i]->strTile[0], 13);
+					DoubleBuffer::GetInstance()->WriteBuffer(TileList[i]->Position.x, TileList[i]->Position.y, TileList[i]->strTile[1], 13);
+					DoubleBuffer::GetInstance()->WriteBuffer(TileList[i]->Position.x, TileList[i]->Position.y + 1, TileList[i]->strTile[2], 13);
 				}
 				else
 				{
@@ -115,6 +139,39 @@ int main(void)
 					DoubleBuffer::GetInstance()->WriteBuffer(TileList[i]->Position.x + 2, TileList[i]->Position.y, TileList[i]->Index);
 				}
 			}
+
+
+			int iIndex = Player.Index - 1;
+
+			if (Player.Index > 0 && TileList[iIndex]->Position.x >= 0 && 
+				(TileList[iIndex]->Position.x + TILE_SIZE_X) <= TileList[Player.Index]->Position.x &&
+				TileList[iIndex]->Option != 1)
+			{
+				DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x, TileList[iIndex]->Position.y - 1, TileList[iIndex]->strTile[0], 10);
+				DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x, TileList[iIndex]->Position.y, TileList[iIndex]->strTile[1], 10);
+				DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x, TileList[iIndex]->Position.y + 1, TileList[iIndex]->strTile[2], 10);
+				DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x + 2, TileList[iIndex]->Position.y, TileList[iIndex]->Index);
+			}
+
+			iIndex = Player.Index - TILE_COUNT_X;
+			DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x, TileList[iIndex]->Position.y - 1, TileList[iIndex]->strTile[0], 10);
+			DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x, TileList[iIndex]->Position.y, TileList[iIndex]->strTile[1], 10);
+			DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x, TileList[iIndex]->Position.y + 1, TileList[iIndex]->strTile[2], 10);
+			DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x + 2, TileList[iIndex]->Position.y, TileList[iIndex]->Index);
+
+			iIndex = Player.Index + 1;
+			DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x, TileList[iIndex]->Position.y - 1, TileList[iIndex]->strTile[0], 10);
+			DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x, TileList[iIndex]->Position.y, TileList[iIndex]->strTile[1], 10);
+			DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x, TileList[iIndex]->Position.y + 1, TileList[iIndex]->strTile[2], 10);
+			DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x + 2, TileList[iIndex]->Position.y, TileList[iIndex]->Index);
+
+			iIndex = Player.Index + TILE_COUNT_X;
+			DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x, TileList[iIndex]->Position.y - 1, TileList[iIndex]->strTile[0], 10);
+			DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x, TileList[iIndex]->Position.y, TileList[iIndex]->strTile[1], 10);
+			DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x, TileList[iIndex]->Position.y + 1, TileList[iIndex]->strTile[2], 10);
+			DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x + 2, TileList[iIndex]->Position.y, TileList[iIndex]->Index);
+
+			DoubleBuffer::GetInstance()->WriteBuffer(Player.Position.x, Player.Position.y, (char*)"褡", 12);
 		}
 	}
 

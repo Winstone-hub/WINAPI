@@ -16,6 +16,7 @@ typedef struct tagTile
 	Vector2 Position;
 	Vector2 Scale;
 	int Index;
+	int Option;
 
 	char* strTile[3];
 }TILE;

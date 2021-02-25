@@ -15,9 +15,8 @@ int main(void)
 	DoubleBuffer::GetInstance()->CreateBuffer(121, 32);
 
 	ULONGLONG Time = GetTickCount64();
-	vector<TILE*> TileList;
 
-
+	vector<TILE*> TileList(TILE_COUNT_X * TILE_COUNT_Y);
 
 	TILE Player;
 	{
@@ -48,6 +47,7 @@ int main(void)
 			Tile->Position.y = (i * Tile->Scale.y) + (Tile->Scale.y / 2);
 
 			Tile->Index = i * TILE_COUNT_X + j;
+			Tile->Cost = 1;
 
 			TileList.push_back(Tile);
 
@@ -165,8 +165,6 @@ int main(void)
 				DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x + 2, TileList[iIndex]->Position.y, TileList[iIndex]->Index);
 			}
 
-			
-
 			//** ¿ìÃø °Ë»ç.
 			iIndex = Player.Index + 1;
 			if (iIndex < (TILE_COUNT_X * TILE_COUNT_Y) && TileList[iIndex]->Position.x <= 120 &&
@@ -192,7 +190,7 @@ int main(void)
 
 			}
 			
-				DoubleBuffer::GetInstance()->WriteBuffer(Player.Position.x, Player.Position.y, (char*)"¿Ê", 12);
+			DoubleBuffer::GetInstance()->WriteBuffer(Player.Position.x, Player.Position.y, (char*)"¿Ê", 12);
 		}
 	}
 

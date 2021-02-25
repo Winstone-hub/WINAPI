@@ -141,9 +141,9 @@ int main(void)
 			}
 
 
+			//** 죄측 검사.
 			int iIndex = Player.Index - 1;
-
-			if (Player.Index > 0 && TileList[iIndex]->Position.x >= 0 && 
+			if (iIndex >= 0 && TileList[iIndex]->Position.x >= 0 &&
 				(TileList[iIndex]->Position.x + TILE_SIZE_X) <= TileList[Player.Index]->Position.x &&
 				TileList[iIndex]->Option != 1)
 			{
@@ -153,25 +153,46 @@ int main(void)
 				DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x + 2, TileList[iIndex]->Position.y, TileList[iIndex]->Index);
 			}
 
+			//** 상단 검사.
 			iIndex = Player.Index - TILE_COUNT_X;
-			DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x, TileList[iIndex]->Position.y - 1, TileList[iIndex]->strTile[0], 10);
-			DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x, TileList[iIndex]->Position.y, TileList[iIndex]->strTile[1], 10);
-			DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x, TileList[iIndex]->Position.y + 1, TileList[iIndex]->strTile[2], 10);
-			DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x + 2, TileList[iIndex]->Position.y, TileList[iIndex]->Index);
+			if (iIndex >= 0 && TileList[iIndex]->Position.y >= 0 &&
+				(TileList[iIndex]->Position.y + TILE_SIZE_Y) <= TileList[Player.Index]->Position.y &&
+				TileList[iIndex]->Option != 1)
+			{
+				DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x, TileList[iIndex]->Position.y - 1, TileList[iIndex]->strTile[0], 10);
+				DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x, TileList[iIndex]->Position.y, TileList[iIndex]->strTile[1], 10);
+				DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x, TileList[iIndex]->Position.y + 1, TileList[iIndex]->strTile[2], 10);
+				DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x + 2, TileList[iIndex]->Position.y, TileList[iIndex]->Index);
+			}
 
+			
+
+			//** 우측 검사.
 			iIndex = Player.Index + 1;
-			DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x, TileList[iIndex]->Position.y - 1, TileList[iIndex]->strTile[0], 10);
-			DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x, TileList[iIndex]->Position.y, TileList[iIndex]->strTile[1], 10);
-			DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x, TileList[iIndex]->Position.y + 1, TileList[iIndex]->strTile[2], 10);
-			DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x + 2, TileList[iIndex]->Position.y, TileList[iIndex]->Index);
-
+			if (iIndex < (TILE_COUNT_X * TILE_COUNT_Y) && TileList[iIndex]->Position.x <= 120 &&
+				TileList[iIndex]->Position.x >= TileList[Player.Index]->Position.x + TILE_SIZE_X &&
+				TileList[iIndex]->Option != 1)
+			{
+				DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x, TileList[iIndex]->Position.y - 1, TileList[iIndex]->strTile[0], 10);
+				DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x, TileList[iIndex]->Position.y, TileList[iIndex]->strTile[1], 10);
+				DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x, TileList[iIndex]->Position.y + 1, TileList[iIndex]->strTile[2], 10);
+				DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x + 2, TileList[iIndex]->Position.y, TileList[iIndex]->Index);
+			}
+			
+			//** 하단 검사.
 			iIndex = Player.Index + TILE_COUNT_X;
-			DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x, TileList[iIndex]->Position.y - 1, TileList[iIndex]->strTile[0], 10);
-			DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x, TileList[iIndex]->Position.y, TileList[iIndex]->strTile[1], 10);
-			DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x, TileList[iIndex]->Position.y + 1, TileList[iIndex]->strTile[2], 10);
-			DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x + 2, TileList[iIndex]->Position.y, TileList[iIndex]->Index);
+			if (iIndex < (TILE_COUNT_X * TILE_COUNT_Y) && TileList[iIndex]->Position.y <= 30 &&
+				TileList[iIndex]->Position.y >= (TileList[Player.Index]->Position.y + TILE_SIZE_Y) &&
+				TileList[iIndex]->Option != 1)
+			{
+				DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x, TileList[iIndex]->Position.y - 1, TileList[iIndex]->strTile[0], 10);
+				DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x, TileList[iIndex]->Position.y, TileList[iIndex]->strTile[1], 10);
+				DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x, TileList[iIndex]->Position.y + 1, TileList[iIndex]->strTile[2], 10);
+				DoubleBuffer::GetInstance()->WriteBuffer(TileList[iIndex]->Position.x + 2, TileList[iIndex]->Position.y, TileList[iIndex]->Index);
 
-			DoubleBuffer::GetInstance()->WriteBuffer(Player.Position.x, Player.Position.y, (char*)"옷", 12);
+			}
+			
+				DoubleBuffer::GetInstance()->WriteBuffer(Player.Position.x, Player.Position.y, (char*)"옷", 12);
 		}
 	}
 

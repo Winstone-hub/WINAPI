@@ -8,7 +8,9 @@ const int TILE_SIZE_Y = 3;
 const int TILE_COUNT_X = 120 / TILE_SIZE_X;
 const int TILE_COUNT_Y = 30 / TILE_SIZE_Y;
 
-void GetNode(int _index, int _iCost, NODE* _pNode);
+
+NODE* GetNode(int _index, int _iCost, NODE* _pNode);
+bool Compare(NODE* _pDestNode, NODE* _pSourNode);
 
 int main(void)
 {
@@ -82,6 +84,8 @@ int main(void)
 			break;
 	}
 
+	//** 출발지점
+	int iStartIndex = 0;
 
 	//** 도착 지점 셋팅.
 	int iEndIndex;
@@ -124,6 +128,8 @@ int main(void)
 
 			Player.Index = iY * TILE_COUNT_X + iX;
 
+			//** 출발지점 셋팅.
+			iStartIndex = Player.Index;
 
 			for (size_t i = 0; i < pTileList.size(); ++i)
 			{
@@ -149,29 +155,38 @@ int main(void)
 			/***************************************************************************************************
 			* 타일 검사 시작.
 			****************************************************************************************************/
-			int iIndex = Player.Index;
 
+
+
+			//** 최 상위 부모 노드
 			pNodeList = new NODE;
 			pNodeList->Cost = 0;
-			pNodeList->Index = iIndex;
+			pNodeList->Index = Player.Index;
 			pNodeList->Parent = NULL;
+
+
+
+			//** 검사를 마친 노드.
+			list<NODE*> CloseList;
+
+			//** 확인 해야할 노드.
+			list<NODE*> OpenList;
+
+			//** 최종 노드를 담은 타일.
+			list<int> BestList;
+
+			NODE* pNode = NULL;
 
 			while (true)
 			{
-				break;
-				if (iIndex == iEndIndex)
-					break;
-
-
-
-				/*
 				//** 죄측 검사.
 				int iIndex = Player.Index - 1;
 				if (iIndex >= 0 && pTileList[iIndex]->Position.x >= 0 &&
 					(pTileList[iIndex]->Position.x + TILE_SIZE_X) <= pTileList[Player.Index]->Position.x &&
 					pTileList[iIndex]->Option != 1)
 				{
-					GetNode(iIndex, pTileList[iIndex]->Cost, pNodeList);
+					pNode = GetNode(iIndex, pTileList[iIndex]->Cost, pNodeList);
+					OpenList.push_back(pNode);
 				}
 
 				//** 상단 검사.
@@ -180,7 +195,8 @@ int main(void)
 					(pTileList[iIndex]->Position.y + TILE_SIZE_Y) <= pTileList[Player.Index]->Position.y &&
 					pTileList[iIndex]->Option != 1)
 				{
-					GetNode(iIndex, pTileList[iIndex]->Cost, pNodeList);
+					pNode = GetNode(iIndex, pTileList[iIndex]->Cost, pNodeList);
+					OpenList.push_back(pNode);
 				}
 
 				//** 우측 검사.
@@ -189,7 +205,8 @@ int main(void)
 					pTileList[iIndex]->Position.x >= pTileList[Player.Index]->Position.x + TILE_SIZE_X &&
 					pTileList[iIndex]->Option != 1)
 				{
-					GetNode(iIndex, pTileList[iIndex]->Cost, pNodeList);
+					pNode = GetNode(iIndex, pTileList[iIndex]->Cost, pNodeList);
+					OpenList.push_back(pNode);
 				}
 
 				//** 하단 검사.
@@ -198,10 +215,35 @@ int main(void)
 					pTileList[iIndex]->Position.y >= (pTileList[Player.Index]->Position.y + TILE_SIZE_Y) &&
 					pTileList[iIndex]->Option != 1)
 				{
-					GetNode(iIndex, pTileList[iIndex]->Cost, pNodeList);
+					pNode = GetNode(iIndex, pTileList[iIndex]->Cost, pNodeList);
+					OpenList.push_back(pNode);
 				}
-				*/
 
+
+				OpenList.sort(Compare);
+
+				list<NODE*>::iterator iter = OpenList.begin();
+				pNodeList = (*iter);
+
+				CloseList.push_back((*iter));
+				OpenList.erase(iter);
+
+
+				if (pNodeList->Index == iEndIndex)
+				{
+					while (true)
+					{
+						BestList.push_back(pNodeList->Index);
+
+						pNodeList = pNodeList->Parent;
+
+						if (pNodeList->Index == iStartIndex)
+							break;
+					}
+
+					BestList.reverse();
+					break;
+				}
 			}
 
 			/*
@@ -264,18 +306,23 @@ int main(void)
 }
 
 
-void GetNode(int _index, int _iCost, NODE* _pNode)
+NODE* GetNode(int _index, int _iCost, NODE* _pNode)
 {
-	if (_pNode->Parent == NULL)
-	{
-		NODE* pNode = new NODE;
+	NODE* pNode = new NODE;
 
-		pNode->Index = _index;
-		pNode->Cost = _pNode->Cost + _iCost;
-		_pNode->Parent = pNode;
-	}
-	else
-		GetNode(_index, _iCost, _pNode->Parent);
+	pNode->Index = _index;
+	pNode->Cost = _pNode->Cost + _iCost;
+
+	pNode->Parent = _pNode;
+	//_pNode->Parent = pNode;
+
+
+	return pNode;
 }
 
 
+
+bool Compare(NODE* _pDestNode, NODE* _pSourNode)
+{
+	return _pDestNode->Cost < _pSourNode->Cost;
+}

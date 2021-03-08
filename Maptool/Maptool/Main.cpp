@@ -23,12 +23,20 @@ list<int> BestList;
 
 vector<TILE*> pTileList;
 
+//** 출발지점
+int iStartIndex = 0;
+
+//** 도착 지점
+int iEndIndex;
+
+//** 플레이어 
+TILE Player;
 
 
 NODE* GetNode(int _index, NODE** _pNode);
 bool Compare(NODE* _pDestNode, NODE* _pSourNode);
 bool CheckList(const int& _iIndex);
-
+void MakeNode();
 
 
 int main(void)
@@ -38,10 +46,6 @@ int main(void)
 
 	ULONGLONG Time = GetTickCount64();
 
-	
-
-
-	TILE Player;
 	{
 		Player.Position = Vector2(120 / 2, 30 / 2);
 		Player.Scale = Vector2(0, 0);
@@ -69,7 +73,7 @@ int main(void)
 			Tile->Position.y = (i * Tile->Scale.y) + (Tile->Scale.y / 2);
 
 			Tile->Index = i * TILE_COUNT_X + j;
-			Tile->Cost = 1;
+			Tile->Cost = 0;
 			Tile->Option = 0;
 			Tile->Color = 15;
 
@@ -77,8 +81,10 @@ int main(void)
 		}
 	}
 
+
 	int n = 0;
 	srand((DWORD)GetTickCount64());
+
 
 	while (true)
 	{
@@ -102,14 +108,15 @@ int main(void)
 			break;
 	}
 
-	//** 출발지점
-	int iStartIndex = 0;
+	
 
 	//** 도착 지점 셋팅.
-	int iEndIndex;
 	cout << "도착 지점 입력 : "; cin >> iEndIndex;
 	pTileList[iEndIndex]->Option = 10;
 
+
+
+	bool Move = false;
 
 	while (true)
 	{
@@ -149,6 +156,25 @@ int main(void)
 			//** 출발지점 셋팅.
 			iStartIndex = Player.Index;
 
+
+			
+			if (GetAsyncKeyState(VK_RETURN) && !Move)
+			{
+				MakeNode();
+				Move = true;
+			}
+
+			if (Move && !BestList.empty())
+			{
+				Player.Position.x = pTileList[BestList.front()]->Position.x + 4;
+				Player.Position.y = pTileList[BestList.front()]->Position.y;
+
+				BestList.pop_front();
+				Move = false;
+			}
+
+			
+
 			for (size_t i = 0; i < pTileList.size(); ++i)
 			{
 				if (Player.Index == pTileList[i]->Index)
@@ -168,101 +194,11 @@ int main(void)
 			}
 
 			DoubleBuffer::GetInstance()->WriteBuffer(Player.Position.x, Player.Position.y, (char*)"옷", 12);
-
-
-			/***************************************************************************************************
-			* 타일 검사 시작.
-			****************************************************************************************************/
-
-
-
-			//** 최 상위 부모 노드
-			NODE* pNodeList = new NODE;
-			pNodeList->Cost = 0;
-			pNodeList->Index = Player.Index;
-			pNodeList->Parent = NULL;
-
-
-			int iIndex = 0;
-
-
-			while (true)
-			{
-				//** 죄측 검사.
-				iIndex = pNodeList->Index - 1;
-				if (iIndex >= 0 && pTileList[iIndex]->Position.x >= 0 &&
-					(pTileList[iIndex]->Position.x + TILE_SIZE_X) <= pTileList[Player.Index]->Position.x &&
-					pTileList[iIndex]->Option != 1 && 
-					CheckList(iIndex))
-				{
-					OpenList.push_back(
-						GetNode(iIndex, &pNodeList));
-				}
-
-				//** 상단 검사.
-				iIndex = pNodeList->Index - TILE_COUNT_X;
-				if (iIndex >= 0 && pTileList[iIndex]->Position.y >= 0 &&
-					(pTileList[iIndex]->Position.y + TILE_SIZE_Y) <= pTileList[Player.Index]->Position.y &&
-					pTileList[iIndex]->Option != 1 &&
-					CheckList(iIndex))
-				{
-					OpenList.push_back(
-						GetNode(iIndex, &pNodeList));
-				}
-
-				//** 우측 검사.
-				iIndex = pNodeList->Index + 1;
-				if (iIndex < (TILE_COUNT_X * TILE_COUNT_Y) && pTileList[iIndex]->Position.x <= 120 &&
-					pTileList[iIndex]->Position.x >= pTileList[Player.Index]->Position.x + TILE_SIZE_X &&
-					pTileList[iIndex]->Option != 1 &&
-					CheckList(iIndex))
-				{
-					OpenList.push_back(
-						GetNode(iIndex, &pNodeList));
-				}
-
-				//** 하단 검사.
-				iIndex = pNodeList->Index + TILE_COUNT_X;
-				if (iIndex < (TILE_COUNT_X * TILE_COUNT_Y) && pTileList[iIndex]->Position.y <= 30 &&
-					pTileList[iIndex]->Position.y >= (pTileList[Player.Index]->Position.y + TILE_SIZE_Y) &&
-					pTileList[iIndex]->Option != 1 &&
-					CheckList(iIndex))
-				{
-					OpenList.push_back(
-						GetNode(iIndex, &pNodeList));
-				}
-
-
-				OpenList.sort(Compare);
-
-				list<NODE*>::iterator iter = OpenList.begin();
-				pNodeList = (*iter);
-
-				CloseList.push_back((*iter));
-				OpenList.erase(iter);
-
-
-				if (pNodeList->Index == iEndIndex)
-				{
-					while (true)
-					{
-						BestList.push_back(pNodeList->Index);
-						pNodeList = pNodeList->Parent;
-
-						if (pNodeList->Index == iStartIndex)
-							break;
-					}
-
-					BestList.reverse();
-					break;
-				}
-			}
 		}
 	}
 
 	return 0;
 }
-
 
 NODE* GetNode(int _index, NODE** _pNode)
 {
@@ -270,18 +206,33 @@ NODE* GetNode(int _index, NODE** _pNode)
 
 	pNode->Parent = (*_pNode);
 	pNode->Index = _index;
-	pNode->Cost = 0; //** 거리를 구한 값으로 입력.
+
+
+
+	//int iCurCost = pTileList[_index]->Cost + pTileList[(*_pNode)->Index]->Cost;
+	//int iEndCost = pTileList[_index]->Cost + pTileList[iEndIndex]->Cost;
+
+	float fCurCostX = float(pTileList[(*_pNode)->Index]->Position.x - pTileList[_index]->Position.x);
+	float fCurCostY = float(pTileList[(*_pNode)->Index]->Position.y - pTileList[_index]->Position.y);
+
+	float fCurCost = sqrt((fCurCostX * fCurCostX) + (fCurCostY * fCurCostY));
+
+
+
+	float fEndCostX = float(pTileList[iEndIndex]->Position.x - pTileList[_index]->Position.x);
+	float fEndCostY = float(pTileList[iEndIndex]->Position.y - pTileList[_index]->Position.y);
+
+	float fEndCost = sqrt((fEndCostX * fEndCostX) + (fEndCostY * fEndCostY));
+
+	pNode->Cost = fCurCost + fEndCost;
 
 	return pNode;
 }
-
-
 
 bool Compare(NODE* _pDestNode, NODE* _pSourNode)
 {
 	return _pDestNode->Cost < _pSourNode->Cost;
 }
-
 
 bool CheckList(const int& _iIndex)
 {
@@ -298,4 +249,92 @@ bool CheckList(const int& _iIndex)
 	}
 
 	return true;
+}
+
+
+void MakeNode()
+{
+	/***************************************************************************************************
+	* 타일 검사 시작.
+	****************************************************************************************************/
+
+	//** 최 상위 부모 노드
+	NODE* pNodeList = new NODE;
+	pNodeList->Cost = 0;
+	pNodeList->Index = Player.Index;
+	pNodeList->Parent = NULL;
+
+	int iIndex = 0;
+
+
+	while (true)
+	{
+		//** 죄측 검사.
+		iIndex = pNodeList->Index - 1;
+		if (iIndex >= 0 && pTileList[iIndex]->Position.x >= 0 &&
+			(pTileList[iIndex]->Position.x + TILE_SIZE_X) <= pTileList[Player.Index]->Position.x &&
+			pTileList[iIndex]->Option != 1 &&
+			CheckList(iIndex))
+		{
+			OpenList.push_back(
+				GetNode(iIndex, &pNodeList));
+		}
+
+		//** 상단 검사.
+		iIndex = pNodeList->Index - TILE_COUNT_X;
+		if (iIndex >= 0 && pTileList[iIndex]->Position.y >= 0 &&
+			(pTileList[iIndex]->Position.y + TILE_SIZE_Y) <= pTileList[Player.Index]->Position.y &&
+			pTileList[iIndex]->Option != 1 &&
+			CheckList(iIndex))
+		{
+			OpenList.push_back(
+				GetNode(iIndex, &pNodeList));
+		}
+
+		//** 우측 검사.
+		iIndex = pNodeList->Index + 1;
+		if (iIndex < (TILE_COUNT_X * TILE_COUNT_Y) && pTileList[iIndex]->Position.x <= 120 &&
+			pTileList[iIndex]->Position.x >= pTileList[Player.Index]->Position.x + TILE_SIZE_X &&
+			pTileList[iIndex]->Option != 1 &&
+			CheckList(iIndex))
+		{
+			OpenList.push_back(
+				GetNode(iIndex, &pNodeList));
+		}
+
+		//** 하단 검사.
+		iIndex = pNodeList->Index + TILE_COUNT_X;
+		if (iIndex < (TILE_COUNT_X * TILE_COUNT_Y) && pTileList[iIndex]->Position.y <= 30 &&
+			pTileList[iIndex]->Position.y >= (pTileList[Player.Index]->Position.y + TILE_SIZE_Y) &&
+			pTileList[iIndex]->Option != 1 &&
+			CheckList(iIndex))
+		{
+			OpenList.push_back(
+				GetNode(iIndex, &pNodeList));
+		}
+
+
+		OpenList.sort(Compare);
+		list<NODE*>::iterator iter = OpenList.begin();
+
+		pNodeList = (*iter);
+
+		CloseList.push_back((*iter));
+		OpenList.erase(iter);
+
+		if (pNodeList->Index == iEndIndex)
+		{
+			while (true)
+			{
+				BestList.push_back(pNodeList->Index);
+				pNodeList = pNodeList->Parent;
+
+				if (pNodeList->Index == iStartIndex)
+					break;
+			}
+
+			BestList.reverse();
+			break;
+		}
+	}
 }

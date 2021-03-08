@@ -20,7 +20,7 @@ typedef struct tagTransform
 typedef struct tagNode
 {
 	int Index;
-	int Cost;
+	float Cost;
 
 	tagNode* Parent;
 
